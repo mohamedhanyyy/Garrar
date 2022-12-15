@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/helpers/preferences_helper.dart';
-import 'package:garrar/features/login/cubit/login_cubit.dart';
+import 'package:garrar/features/auth/cubit/auth_cubit.dart';
 
 import 'core/config/routes.dart';
 import 'core/config/themes.dart';

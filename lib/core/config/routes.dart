@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:garrar/features/login/view/screens/login_screen.dart';
-import 'package:garrar/features/login/view/screens/reset_password_screen.dart';
-import 'package:garrar/features/login/view/screens/signup_screen.dart';
-import 'package:garrar/features/login/view/screens/verify_email_screen.dart';
+import 'package:garrar/features/auth/view/screens/login_screen.dart';
+import 'package:garrar/features/auth/view/screens/reset_password_screen.dart';
+import 'package:garrar/features/auth/view/screens/signup_screen.dart';
+import 'package:garrar/features/auth/view/screens/verify_email_screen.dart';
 
-import '../../features/login/view/screens/change_password_screen.dart';
+import '../../features/auth/view/screens/change_password_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class Routes {
