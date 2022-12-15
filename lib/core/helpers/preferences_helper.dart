@@ -15,6 +15,14 @@ class PreferencesHelper {
     return preferences?.getString("token") ?? '';
   }
 
+  static Future<void> saveTheme({required bool isWhite}) async {
+    await preferences?.setBool("theme", isWhite);
+  }
+
+  static bool? getTheme() {
+    return preferences?.getBool("theme");
+  }
+
   static void clearPreferences() {
     preferences?.clear();
   }

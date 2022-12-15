@@ -8,12 +8,14 @@ import 'package:garrar/features/auth/cubit/auth_cubit.dart';
 
 import 'core/config/routes.dart';
 import 'core/config/themes.dart';
+import 'core/helpers/dio_helper.dart';
 import 'injector.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
   PreferencesHelper.init();
+  DioHelper.init();
   runApp(const MyApp());
 }
 
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider(create: (context) => LoginCubit()),
+            BlocProvider(create: (context) => AuthCubit()),
           ],
           child: BackGestureWidthTheme(
             backGestureWidth: BackGestureWidth.fraction(1 / 2),
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: appTheme(),
               title: 'Garrar',
-              initialRoute: Routes.signup,
+              initialRoute: Routes.verifyEmail,
               onGenerateRoute: AppRoutes.onGenerateRoute,
             ),
           ),

@@ -30,7 +30,7 @@ class AppRoutes {
             builder: (BuildContext context) => SignupScreen());
       case Routes.verifyEmail:
         return MaterialPageRoute(
-            builder: (BuildContext context) => const VerifyEmailScreen());
+            builder: (BuildContext context) =>   VerifyEmailScreen());
       case Routes.resetPassword:
         return MaterialPageRoute(
             builder: (BuildContext context) => const ResetPasswordScreen());
