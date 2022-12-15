@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:garrar/core/utils/colors.dart';
 
 class CustomButton extends StatelessWidget {
- final String buttonText;
- final Function onTap;
- final double? borderRadius;
- final Size? size;
- final double? fontSize;
+  final String buttonText;
+  final Function onTap;
+  final double? borderRadius;
+  final Size? size;
+  final double? fontSize;
 
- const CustomButton({
+  const CustomButton({
     super.key,
     required this.onTap,
     this.size,

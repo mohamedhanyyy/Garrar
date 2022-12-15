@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
-import 'package:garrar/core/utils/images.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_text_field.dart';
 

@@ -9,7 +9,6 @@ class DioHelper {
     responseType: ResponseType.json,
     headers: {'token': 'Oauth ${PreferencesHelper.getToken()}'},
     connectTimeout: 30000,
-
     receiveTimeout: 30000,
   );
 

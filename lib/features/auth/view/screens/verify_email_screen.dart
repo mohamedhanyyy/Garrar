@@ -48,23 +48,20 @@ class VerifyEmailScreen extends StatelessWidget {
                   ),
                 ),
                 OTPTextField(
-                  otpFieldStyle: OtpFieldStyle(
-                    borderColor: ColorsManager.primary,
-                    backgroundColor: ColorsManager.primary.withOpacity(0.2)
-                  ),
+                    otpFieldStyle: OtpFieldStyle(
+                        borderColor: ColorsManager.primary,
+                        backgroundColor:
+                            ColorsManager.primary.withOpacity(0.2)),
                     controller: otpController,
                     length: 5,
                     width: context.width,
                     textFieldAlignment: MainAxisAlignment.spaceAround,
                     fieldWidth: 45.w,
-
                     fieldStyle: FieldStyle.box,
                     outlineBorderRadius: 15.r,
                     style: TextStyle(fontSize: 17.sp),
                     keyboardType: TextInputType.phone,
-
-                    onCompleted: (pin) {
-                     }),
+                    onCompleted: (pin) {}),
                 Padding(
                   padding: const EdgeInsets.only(
                     top: 20,
