@@ -6,7 +6,6 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
 
-import '../../../../../core/widgets/back_button.dart';
 import '../../../../core/widgets/custom_button.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
@@ -18,7 +17,7 @@ class VerifyEmailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         title: Text(
+        title: Text(
           "Verify Email",
           style: TextStyle(
             color: Colors.black,
@@ -36,7 +35,7 @@ class VerifyEmailScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 37.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 200.h, bottom: 60.h),
                   child: Text(
@@ -64,7 +63,7 @@ class VerifyEmailScreen extends StatelessWidget {
                   height: 20,
                 ),
                 Row(
-                  children:   [
+                  children: [
                     const Text(
                       'Didnt receive OTP',
                       style: TextStyle(
@@ -77,7 +76,7 @@ class VerifyEmailScreen extends StatelessWidget {
                       width: 13,
                     ),
                     InkWell(
-                      onTap: (){},
+                      onTap: () {},
                       child: const Text(
                         'Try again',
                         style: TextStyle(

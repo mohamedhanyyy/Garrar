@@ -6,8 +6,11 @@ import 'package:garrar/features/auth/cubit/auth_state.dart';
 class AuthCubit extends Cubit<LoginState> {
   AuthCubit() : super(LoginInitial());
 
-  void login({required String email, required String password}) {
+  void login({required String email, required String password,    required BuildContext context,
+  }) {
     //todo here
+    NavigationManager.navigateReplacementToPage(context: context, routeName: 'verifyEmailScreen');
+
   }
 
   void signup({

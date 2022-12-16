@@ -100,7 +100,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       border: customOutlineInputBorder,
                     ),
                     onSaved: (phone) {
-                      phoneNumber = phone as String;
+                      phoneNumber = phone!.number  ;
                     },
                     validator: (val) {
                       if (val!.number.isEmpty) {

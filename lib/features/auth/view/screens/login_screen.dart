@@ -80,6 +80,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         password = val!;
                       },
                       decoration: InputDecoration(
+                        border: customOutlineInputBorder,
+                          enabledBorder: customOutlineInputBorder,
+                          focusedErrorBorder: customOutlineInputBorder,
+                          focusedBorder: customOutlineInputBorder,
+                          errorBorder: customOutlineInputBorder,
+                          disabledBorder: customOutlineInputBorder,
+                          filled: true,
+                          fillColor: ColorsManager.gray,
                           hintText: 'Enter password',
                           prefixIcon: const Icon(Icons.lock),
                           suffixIcon: IconButton(
@@ -121,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           context
                               .read<AuthCubit>()
-                              .login(email: email, password: password);
+                              .login(email: email, password: password,context: context);
                         }
                       },
                       buttonText: 'Sign in',
