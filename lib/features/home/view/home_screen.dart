@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:garrar/core/utils/icons.dart';
-import 'package:garrar/features/order/view/my_orders_screen.dart';
 import 'package:garrar/features/profile/view/profile_screen.dart';
 
 import '../../../core/utils/colors.dart';
+import '../../my_orders/view/my_orders_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,8 +15,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Widget> screens = [
-    MyOrdersScreen(),
-    ProfileScreen(),
+    const MyOrdersScreen(),
+    const ProfileScreen(),
   ];
 
   int _currentIndex = 0;
@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: changeCurrentIndex,
         currentIndex: _currentIndex,
@@ -39,15 +40,17 @@ class _HomeScreenState extends State<HomeScreen> {
               IconsManager.shipping,
               color: _currentIndex == 0
                   ? ColorsManager.primary
-                  : ColorsManager.gray,
+                  : ColorsManager.black.withOpacity(0.5),
             ),
             label: 'My orders',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(IconsManager.boat,
-                color: _currentIndex == 1
-                    ? ColorsManager.primary
-                    : ColorsManager.gray),
+            icon: SvgPicture.asset(
+              IconsManager.boat,
+              color: _currentIndex == 1
+                  ? ColorsManager.primary
+                  : ColorsManager.black.withOpacity(0.5),
+            ),
             label: 'Profile',
           ),
         ],

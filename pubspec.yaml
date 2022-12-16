@@ -56,6 +56,9 @@ dependencies:
   intl_phone_field: ^3.1.0
   dio: ^4.0.6
   otp_text_field: ^1.1.3
+  im_stepper: ^1.0.1+1
+  localize_and_translate: ^4.1.1
+  easy_localization: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +72,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/language/
 
   fonts:
     - family: Urbanist
