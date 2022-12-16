@@ -1,8 +1,10 @@
-import 'package:garrar/features/auth/cubit/auth_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'core/helpers/dio_helper.dart';
+import 'core/utils/dialouges.dart';
 
 GetIt locator = GetIt.instance;
 
 setupLocator() {
-  locator.registerLazySingleton(() => AuthCubit());
+  locator.registerLazySingleton(() => Dialogues());
+  locator.registerLazySingleton(() => DioHelper());
 }

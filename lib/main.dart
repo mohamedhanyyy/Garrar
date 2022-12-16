@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 theme: appTheme(),
                 title: 'Garrar',
-                initialRoute: Routes.marineOrder,
+                initialRoute: Routes.home,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
               ),
             ),

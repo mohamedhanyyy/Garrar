@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:otp_text_field/otp_field.dart';
@@ -94,7 +95,9 @@ class VerifyEmailScreen extends StatelessWidget {
                     bottom: 38,
                   ),
                   child: CustomButton(
-                    onTap: () {},
+                    onTap: () {
+                      NavigationManager.navigateReplacementToPage(context: context, routeName: 'homeScreen');
+                    },
                     buttonText: 'Continue',
                   ),
                 ),

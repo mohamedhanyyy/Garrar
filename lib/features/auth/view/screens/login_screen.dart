@@ -24,6 +24,8 @@ class _LoginScreenState extends State<LoginScreen> {
   String email = "";
   String password = "";
 
+  bool checkBox=false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,6 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onSaved: (val) {
                         password = val!;
                       },
+                      obscureText: isVisible,
                       decoration: InputDecoration(
                           border: customOutlineInputBorder,
                           enabledBorder: customOutlineInputBorder,
@@ -114,7 +117,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Checkbox(value: false, onChanged: (val) {}),
+                      Checkbox(value: checkBox, onChanged: (val) {
+                        setState(() {
+                          checkBox=val!;
+                        });
+                      }),
                       const SizedBox(
                         width: 10,
                       ),
@@ -135,6 +142,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               email: email,
                               password: password,
                               context: context);
+
+                          if(checkBox==true){
+
+                            //todo action
+                          }
+
+                          else {
+
+                            // todo another action
+                          }
                         }
                       },
                       buttonText: 'Sign in',

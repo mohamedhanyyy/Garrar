@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/utils/colors.dart';
+import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/back_button.dart';
 import 'package:garrar/features/marine_order/view/widgets/first_step.dart';
+import 'package:garrar/features/marine_order/view/widgets/fourth_step.dart';
 import 'package:garrar/features/marine_order/view/widgets/second_step.dart';
 import 'package:garrar/features/marine_order/view/widgets/third_step.dart';
 import 'package:im_stepper/stepper.dart';
@@ -19,13 +21,14 @@ class _MarineOrderScreenState extends State<MarineOrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButtonWidget(),
+        leading: activeStep == 0 ? const BackButtonWidget() : null,
         title: Text(
           'Make Marine Order',
           style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 20.sp,
-              color: Colors.black),
+            fontWeight: FontWeight.w600,
+            fontSize: 20.sp,
+            color: Colors.black,
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -36,7 +39,10 @@ class _MarineOrderScreenState extends State<MarineOrderScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               NumberStepper(
-                numbers: const [1, 2, 3, 4, 5],
+                numbers: const [1, 2, 3, 4],
+                numberStyle: const TextStyle(
+                  color: Colors.white,
+                ),
                 stepReachedAnimationEffect: Curves.bounceInOut,
                 activeStepColor: ColorsManager.primary,
                 activeStepBorderColor: Colors.black,
@@ -63,23 +69,29 @@ class _MarineOrderScreenState extends State<MarineOrderScreen> {
               SizedBox(
                 height: 20.h,
               ),
-            if (activeStep == 0)
-              FirstStep(onTap: () {
-                setState(() {
-                  activeStep = 2;
-                });
-              }),
-            if (activeStep == 1)
-              SecondStep(onTap: () {
-                setState(() {
-                  activeStep = 2;
-                });
-              }),
-            if (activeStep == 2)
-                ThirdStep(onTap: () {
+              if (activeStep == 0)
+                FirstStep(onTap: () {
+                   setState(() {
+                    activeStep = 1;
+                  });
+                }),
+              if (activeStep == 1)
+                SecondStep(onTap: () {
                   setState(() {
                     activeStep = 2;
-                  } );
+                  });
+                }),
+              if (activeStep == 2)
+                ThirdStep(onTap: () {
+                  setState(() {
+                    activeStep = 3;
+                  });
+                }),
+              if (activeStep == 2)
+                FourthStep(onTap: () {
+                  setState(() {
+                    activeStep = 4;
+                  });
                 }),
             ],
           ),

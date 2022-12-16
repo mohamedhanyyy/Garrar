@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/utils/colors.dart';
+import '../../../../core/utils/dialouges.dart';
 import '../../../../core/widgets/custom_button.dart';
 
 class ThirdStep extends StatefulWidget {
@@ -44,12 +43,12 @@ class _ThirdStepState extends State<ThirdStep> {
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: ColorsManager.gray,
-                border: Border.all(color: ColorsManager.gray)),
+                color: const Color(0xffFAFAFA),
+                border: Border.all(color: Colors.black)),
             child: DropdownButton(
                 isExpanded: true,
-                hint: Text('Choose Destination Location'),
-                disabledHint: Text('Choose Destination Location'),
+                hint: const Text('Choose Destination Location'),
+                disabledHint: const Text('Choose Destination Location'),
                 underline: const SizedBox.shrink(),
                 borderRadius: BorderRadius.circular(15),
                 items: widget.data.map((e) {
@@ -72,8 +71,8 @@ class _ThirdStepState extends State<ThirdStep> {
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: ColorsManager.gray,
-                border: Border.all(color: ColorsManager.gray)),
+                color: const Color(0xffFAFAFA),
+                border: Border.all(color: Colors.black)),
             child: DropdownButton<String>(
                 isExpanded: true,
                 underline: const SizedBox.shrink(),
@@ -99,8 +98,8 @@ class _ThirdStepState extends State<ThirdStep> {
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: ColorsManager.gray,
-                border: Border.all(color: ColorsManager.gray)),
+                color: const Color(0xffFAFAFA),
+                border: Border.all(color: Colors.black)),
             child: DropdownButton<String>(
                 isExpanded: true,
                 underline: const SizedBox.shrink(),
@@ -125,8 +124,8 @@ class _ThirdStepState extends State<ThirdStep> {
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: ColorsManager.gray,
-                border: Border.all(color: ColorsManager.gray)),
+                color: const Color(0xffFAFAFA),
+                border: Border.all(color: Colors.black)),
             child: DropdownButton<String>(
                 isExpanded: true,
                 underline: const SizedBox.shrink(),
@@ -145,15 +144,13 @@ class _ThirdStepState extends State<ThirdStep> {
         CustomButton(
           onTap: () {
             if (getInLocation != '' &&
-                getOutLocation != '' &&
+                destinationLocation != '' &&
                 destinationLocation != '' &&
                 dryPortLocation != '') {
               widget.onTap();
+            } else {
+              showFillDataDialog(context: context);
             }
-            else
-              {
-
-              }
           },
           buttonText: 'Continue',
         ),

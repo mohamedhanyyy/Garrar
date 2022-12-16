@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/back_button.dart';
 
@@ -136,7 +137,9 @@ class EditProfileScreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),
                               )),
-                          onPressed: () {},
+                          onPressed: () {
+                            // todo edit here
+                          },
                           child: const Text("Edit"),
                         ),
                       ),
@@ -151,7 +154,11 @@ class EditProfileScreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),
                               )),
-                          onPressed: () {},
+                          onPressed: () {
+                            NavigationManager.navigateToPage(
+                                context: context,
+                                routeName: "changePasswordScreen");
+                          },
                           child: const Text("Change Password"),
                         ),
                       ),

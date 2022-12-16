@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/utils/images.dart';
-import 'package:garrar/features/my_orders/view/widgets/my_order_widget.dart';
-import '../../../core/widgets/custom_text_field.dart';
+ import '../../../core/widgets/custom_text_field.dart';
 
 class MyOrdersScreen extends StatefulWidget {
   const MyOrdersScreen({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
-          padding: EdgeInsets.only(left: 10.w, top: 8.h),
+          padding: EdgeInsets.only(left: 15.w, top: 7.h),
           child: Image.asset(
             ImagesManager.logo1,
             width: 27.w,
@@ -37,13 +37,15 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
               color: Colors.black),
         ),
         actions: [
-          InkWell(
+          GestureDetector(
             child: SvgPicture.asset(IconsManager.boat),
-            onTap: () {},
+            onTap: () {
+              NavigationManager.navigateToPage(context: context, routeName: 'marineOrderScreen');
+            },
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: InkWell(
+            child: GestureDetector(
               child: SvgPicture.asset(IconsManager.shipping),
               onTap: () {},
             ),

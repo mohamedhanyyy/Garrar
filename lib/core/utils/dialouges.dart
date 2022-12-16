@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:garrar/core/utils/colors.dart';
+import 'package:garrar/core/widgets/custom_button.dart';
 
 class Dialogues {
   infoDialog(
@@ -188,13 +189,14 @@ class Dialogues {
     final shouldPop = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
+
         title: const Text("هل تريد اغلاق التطبيق ؟"),
         titleTextStyle: const TextStyle(fontSize: 17, color: Colors.black),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
             child: const Text(
-              "لا",
+              "No",
               style: TextStyle(fontSize: 17),
             ),
           ),
@@ -202,7 +204,7 @@ class Dialogues {
             onPressed: () =>
                 SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
             child: const Text(
-              'نعم',
+              'Yes',
               style: TextStyle(fontSize: 17),
             ),
           ),
@@ -211,58 +213,6 @@ class Dialogues {
     );
 
     return shouldPop ?? false;
-  }
-
-  imagePreviewDialog(
-      {required BuildContext context,
-      required String title,
-      required String desc,
-      required Function onPress,
-      required String buttonName,
-      required double opacity,
-      required Widget image}) {
-    return EasyDialog(
-        cardColor: Colors.white,
-        fogOpacity: opacity,
-        cornerRadius: 30,
-        contentPadding: const EdgeInsets.all(20),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 20,
-            color: ColorsManager.primary,
-          ),
-        ),
-        description: Text(
-          desc,
-          style: const TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 13,
-            color: Colors.black,
-          ),
-        ),
-        closeButton: true,
-        contentList: [
-          Center(child: image),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(50))),
-              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 14),
-              backgroundColor: ColorsManager.primary,
-            ),
-            onPressed: () {
-              onPress();
-            },
-            child: Text(
-              buttonName,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ]).show(context);
   }
 
   showLoadingDialog(BuildContext context) {
@@ -275,4 +225,52 @@ class Dialogues {
   hideDialog(BuildContext context) {
     Navigator.pop(context);
   }
+
+
+
+  cameraDialog({
+    required BuildContext context,
+    required Function onCameraTap,
+    required Function onGalleryTap,
+    bool? dismiss,
+  }) {
+    AwesomeDialog(
+      context: context,
+      padding: const EdgeInsets.all(10),
+      dismissOnBackKeyPress: dismiss ?? true,
+      dismissOnTouchOutside: dismiss ?? true,
+      animType: AnimType.scale,
+      dialogType: DialogType.info,
+      desc: 'Select image source',
+
+      descTextStyle: const TextStyle(fontSize: 14),
+      titleTextStyle: const TextStyle(fontSize: 17),
+      title: "Pick Image",
+      btnCancel: CustomButton(
+        onTap: (){
+          Navigator.of(context).pop();
+          onCameraTap();
+        }, buttonText: 'Camera',
+      ),
+      btnOk: CustomButton(
+        onTap: (){
+          Navigator.of(context).pop();
+          onGalleryTap();
+        }, buttonText: 'Gallery',
+      ),
+    ).show();
+  }
+
+
+}
+
+void showFillDataDialog({required BuildContext context}){
+  Dialogues().alertDialog(
+      context: context,
+      title: 'Warning',
+
+      desc: 'Please fill all data',
+      dialogType: DialogType.warning,
+      buttonName: 'Ok',
+      onTap: () => Navigator.of(context).pop());
 }
