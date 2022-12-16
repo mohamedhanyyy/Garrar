@@ -18,9 +18,7 @@ class VerifyEmailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:
-            const SizedBox(width: 18, height: 12, child: BackButtonWidget()),
-        title: Text(
+         title: Text(
           "Verify Email",
           style: TextStyle(
             color: Colors.black,

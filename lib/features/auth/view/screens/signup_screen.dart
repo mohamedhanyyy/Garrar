@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
@@ -6,6 +7,8 @@ import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_text_field.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+
+import '../../cubit/auth_cubit.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -17,15 +20,15 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final formKey = GlobalKey<FormState>();
 
-  String? name;
+  String name = "";
 
-  String? companyName;
+  String companyName = '';
 
-  String? email;
+  String email = '';
 
-  String? phoneNumber;
+  String phoneNumber = '';
 
-  String? password;
+  String password = '';
 
   bool isVisible = true;
 
@@ -54,11 +57,11 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   TextFormField(
-                    onChanged: (val) {
-                      name = val;
+                    onSaved: (val) {
+                      name = val!;
                     },
                     decoration: customInputDecoration(
-                      hint: 'full name',
+                      hint: 'Full name',
                       prefixIcon: (Icons.person),
                     ),
                     validator: (val) {
@@ -74,8 +77,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       bottom: 17,
                     ),
                     child: TextFormField(
-                      onChanged: (val) {
-                        companyName = val;
+                      onSaved: (val) {
+                        companyName = val!;
                       },
                       decoration: customInputDecoration(
                         hint: 'Company name',
@@ -96,8 +99,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       filled: true,
                       border: customOutlineInputBorder,
                     ),
-                    onChanged: (phone) {
-                      phoneNumber = phone as String?;
+                    onSaved: (phone) {
+                      phoneNumber = phone as String;
+                    },
+                    validator: (val) {
+                      if (val!.number.isEmpty) {
+                        return 'Empty number';
+                      }
+                      return null;
                     },
                   ),
                   Padding(
@@ -105,8 +114,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       bottom: 17,
                     ),
                     child: TextFormField(
-                      onChanged: (val) {
-                        email = val;
+                      onSaved: (val) {
+                        email = val!;
                       },
                       decoration: customInputDecoration(
                         hint: 'email',
@@ -126,8 +135,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     child: TextFormField(
                       obscureText: isVisible,
-                      onChanged: (val) {
-                        email = val;
+                      onSaved: (val) {
+                        password = val!;
                       },
                       decoration: InputDecoration(
                         border: customOutlineInputBorder,
@@ -170,6 +179,14 @@ class _SignupScreenState extends State<SignupScreen> {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
 
+                          context.read<AuthCubit>().signup(
+                                email: email,
+                                password: password,
+                                name: name,
+                                companyName: companyName,
+                                phoneNumber: phoneNumber,
+                                context: context,
+                              );
                         }
                       },
                       buttonText: 'Sign up',

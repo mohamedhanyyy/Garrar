@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
@@ -6,6 +7,8 @@ import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/utils/images.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_text_field.dart';
+
+import '../../cubit/auth_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -18,6 +21,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
 
   bool isVisible = true;
+  String email = "";
+  String password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   TextFormField(
+                    onSaved: (val) {
+                      email = val!;
+                    },
                     decoration: customInputDecoration(
                       hint: 'Enter email',
                       prefixIcon: (Icons.email),
@@ -68,6 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       bottom: 17,
                     ),
                     child: TextFormField(
+                      onSaved: (val) {
+                        password = val!;
+                      },
                       decoration: InputDecoration(
                           hintText: 'Enter password',
                           prefixIcon: const Icon(Icons.lock),
@@ -107,6 +118,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
+
+                          context
+                              .read<AuthCubit>()
+                              .login(email: email, password: password);
                         }
                       },
                       buttonText: 'Sign in',
@@ -117,7 +132,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                          NavigationManager.navigateToPage(context: context, routeName: 'resetPasswordScreen');
+                          NavigationManager.navigateToPage(
+                              context: context,
+                              routeName: 'resetPasswordScreen');
                         },
                         child: const Text(
                           'Forget Password',
@@ -128,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Row(
-                        children:   [
+                        children: [
                           const Text(
                             'Dont have an account?',
                             style: TextStyle(
@@ -139,9 +156,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: 5,
                           ),
                           InkWell(
-                            onTap: (){
-                              NavigationManager.navigateToPage(context: context, routeName: 'signupScreen');
-
+                            onTap: () {
+                              NavigationManager.navigateToPage(
+                                  context: context, routeName: 'signupScreen');
                             },
                             child: const Text(
                               'Sign up',
