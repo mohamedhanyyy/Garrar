@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/utils/images.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_text_field.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
+
+  bool isVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +26,7 @@ class LoginScreen extends StatelessWidget {
         width: context.width,
         height: context.height,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 37.w),
             child: Form(
@@ -43,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   TextFormField(
                     decoration: customInputDecoration(
-                      hint: 'enter email',
+                      hint: 'Enter email',
                       prefixIcon: (Icons.email),
                     ),
                     validator: (val) {
@@ -59,10 +68,17 @@ class LoginScreen extends StatelessWidget {
                       bottom: 17,
                     ),
                     child: TextFormField(
-                      decoration: customInputDecoration(
-                          hint: 'enter password',
-                          prefixIcon: (Icons.lock),
-                          suffixIcon: Icons.visibility),
+                      decoration: InputDecoration(
+                          hintText: 'Enter password',
+                          prefixIcon: const Icon(Icons.lock),
+                          suffixIcon: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              isVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          )),
                       validator: (val) {
                         if (val!.isEmpty) {
                           return 'Empty password';
@@ -100,7 +116,9 @@ class LoginScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          NavigationManager.navigateToPage(context: context, routeName: 'resetPasswordScreen');
+                        },
                         child: const Text(
                           'Forget Password',
                           style: TextStyle(
@@ -110,18 +128,22 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       Row(
-                        children: const [
-                          Text(
+                        children:   [
+                          const Text(
                             'Dont have an account?',
                             style: TextStyle(
                               fontSize: 12,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           InkWell(
-                            child: Text(
+                            onTap: (){
+                              NavigationManager.navigateToPage(context: context, routeName: 'signupScreen');
+
+                            },
+                            child: const Text(
                               'Sign up',
                               style: TextStyle(
                                 fontSize: 12,

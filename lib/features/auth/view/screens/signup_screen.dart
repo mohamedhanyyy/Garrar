@@ -169,6 +169,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
+
                         }
                       },
                       buttonText: 'Sign up',

@@ -62,6 +62,35 @@ class VerifyEmailScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 17.sp),
                     keyboardType: TextInputType.phone,
                     onCompleted: (pin) {}),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children:   [
+                    const Text(
+                      'Didnt receive OTP',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: ColorsManager.gray,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 13,
+                    ),
+                    InkWell(
+                      onTap: (){},
+                      child: const Text(
+                        'Try again',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: ColorsManager.primary,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
                 Padding(
                   padding: const EdgeInsets.only(
                     top: 20,

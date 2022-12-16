@@ -14,7 +14,7 @@ class Routes {
   static const String verifyEmail = 'verifyEmailScreen';
   static const String resetPassword = 'resetPasswordScreen';
   static const String changePassword = 'changePasswordScreen';
-}
+ }
 
 class AppRoutes {
   static Route? onGenerateRoute(RouteSettings routeSettings) {

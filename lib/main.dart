@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: appTheme(),
               title: 'Garrar',
-              initialRoute: Routes.verifyEmail,
+              initialRoute: Routes.initialRoute,
               onGenerateRoute: AppRoutes.onGenerateRoute,
             ),
           ),
