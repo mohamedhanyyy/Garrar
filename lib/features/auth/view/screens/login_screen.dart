@@ -11,7 +11,7 @@ import 'package:garrar/core/widgets/custom_text_field.dart';
 import '../../cubit/auth_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         password = val!;
                       },
                       decoration: InputDecoration(
-                        border: customOutlineInputBorder,
+                          border: customOutlineInputBorder,
                           enabledBorder: customOutlineInputBorder,
                           focusedErrorBorder: customOutlineInputBorder,
                           focusedBorder: customOutlineInputBorder,
@@ -91,7 +91,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           hintText: 'Enter password',
                           prefixIcon: const Icon(Icons.lock),
                           suffixIcon: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                isVisible = !isVisible;
+                              });
+                            },
                             icon: Icon(
                               isVisible
                                   ? Icons.visibility
@@ -127,9 +131,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
 
-                          context
-                              .read<AuthCubit>()
-                              .login(email: email, password: password,context: context);
+                          context.read<AuthCubit>().login(
+                              email: email,
+                              password: password,
+                              context: context);
                         }
                       },
                       buttonText: 'Sign in',
