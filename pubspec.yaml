@@ -32,7 +32,6 @@ dependencies:
   flutter_svg: ^1.1.6
   flutter_bloc: ^8.1.1
   bloc: ^8.1.0
-  http:
   shimmer: ^2.0.0
   image_picker: ^0.8.6
   easy_dialog: ^1.1.1
@@ -72,7 +71,6 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/language/
 
   fonts:
     - family: Urbanist

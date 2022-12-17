@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/utils/colors.dart';
-import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/back_button.dart';
 import 'package:garrar/features/marine_order/view/widgets/first_step.dart';
 import 'package:garrar/features/marine_order/view/widgets/fourth_step.dart';
@@ -10,6 +9,8 @@ import 'package:garrar/features/marine_order/view/widgets/third_step.dart';
 import 'package:im_stepper/stepper.dart';
 
 class MarineOrderScreen extends StatefulWidget {
+  const MarineOrderScreen({super.key});
+
   @override
   State<MarineOrderScreen> createState() => _MarineOrderScreenState();
 }
@@ -21,7 +22,7 @@ class _MarineOrderScreenState extends State<MarineOrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: activeStep == 0 ? const BackButtonWidget() : null,
+        leading: activeStep == 0 ? BackButtonWidget(context: context) : null,
         title: Text(
           'Make Marine Order',
           style: TextStyle(
@@ -71,7 +72,7 @@ class _MarineOrderScreenState extends State<MarineOrderScreen> {
               ),
               if (activeStep == 0)
                 FirstStep(onTap: () {
-                   setState(() {
+                  setState(() {
                     activeStep = 1;
                   });
                 }),

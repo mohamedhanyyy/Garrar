@@ -26,7 +26,7 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButtonWidget(),
+        leading:   BackButtonWidget(context: context),
       ),
       body: SizedBox(
         width: context.width,

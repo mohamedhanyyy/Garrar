@@ -6,30 +6,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/helpers/preferences_helper.dart';
 import 'package:garrar/features/auth/cubit/auth_cubit.dart';
+import 'package:garrar/features/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:garrar/features/marine_order/cubit/marine_order_cubit.dart';
-
+import 'package:garrar/features/my_orders/cubit/my_orders_cubit.dart';
+import 'package:garrar/features/profile/cubit/profile_cubit.dart';
 import 'core/config/routes.dart';
 import 'core/config/themes.dart';
 import 'core/helpers/dio_helper.dart';
 import 'injector.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-  await EasyLocalization.ensureInitialized();
-
   PreferencesHelper.init();
   DioHelper.init();
-  runApp(
-    MyApp()
-    // EasyLocalization(
-    //   supportedLocales: const [Locale('en'), Locale('ar')],
-    //   saveLocale: true,
-    //   path: 'assets/language',
-    //   fallbackLocale: const Locale('ar'),
-    //   child: const MyApp(),
-    //),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -48,10 +39,19 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => AuthCubit(),
+              create: (BuildContext context) => AuthCubit(),
             ),
             BlocProvider(
-              create: (context) => MarineOrderCubit(),
+              create: (BuildContext context) => MarineOrderCubit(),
+            ),
+            BlocProvider(
+              create: (BuildContext context) => ProfileCubit(),
+            ),
+            BlocProvider(
+              create: (BuildContext context) => EditProfileCubit(),
+            ),
+            BlocProvider(
+              create: (BuildContext context) => MyOrdersCubit(),
             ),
           ],
           child: BackGestureWidthTheme(
@@ -61,9 +61,9 @@ class MyApp extends StatelessWidget {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
               child: MaterialApp(
-                // localizationsDelegates: context.localizationDelegates,
-                // supportedLocales: context.supportedLocales,
-                // locale: context.locale,
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
                 debugShowCheckedModeBanner: false,
                 theme: appTheme(),
                 title: 'Garrar',

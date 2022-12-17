@@ -14,7 +14,7 @@ class ResetPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading:
-            const SizedBox(width: 18, height: 12, child: BackButtonWidget()),
+              SizedBox(width: 18, height: 12, child: BackButtonWidget(context: context)),
         title: Text(
           "Reset Password",
           style: TextStyle(

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BackButtonWidget extends StatelessWidget {
-  const BackButtonWidget({Key? key}) : super(key: key);
+
+  final BuildContext context;
+
+  const BackButtonWidget({super.key, required this.context});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +14,7 @@ class BackButtonWidget extends StatelessWidget {
         onPressed: () {},
       ),
       onTap: () {
-        Navigator.pop(context);
+        Navigator.pop(this.context);
       },
     );
   }
