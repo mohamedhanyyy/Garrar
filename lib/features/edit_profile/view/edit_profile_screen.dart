@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/back_button.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
 import '../../../core/utils/colors.dart';
+import '../../../core/utils/icons.dart';
 import '../../../core/widgets/custom_input_decoration.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
 class EditProfileScreen extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -55,7 +56,7 @@ class EditProfileScreen extends StatelessWidget {
                     },
                     decoration: customInputDecoration(
                       hint: 'Edit name',
-                      prefixIcon: (Icons.person),
+                      prefix: IconsManager.person,
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
@@ -75,7 +76,7 @@ class EditProfileScreen extends StatelessWidget {
                       },
                       decoration: customInputDecoration(
                         hint: 'Edit Company name',
-                        prefixIcon: (Icons.house),
+                        prefix: IconsManager.building,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
@@ -95,7 +96,7 @@ class EditProfileScreen extends StatelessWidget {
                       },
                       decoration: customInputDecoration(
                         hint: 'Edit email',
-                        prefixIcon: (Icons.email),
+                        prefix: IconsManager.mailCard,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {

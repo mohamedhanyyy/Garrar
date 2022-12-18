@@ -36,7 +36,7 @@ class VerifyEmailScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 37.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-               children: [
+              children: [
                 Padding(
                   padding: EdgeInsets.only(top: 200.h, bottom: 60.h),
                   child: Text(
@@ -59,6 +59,7 @@ class VerifyEmailScreen extends StatelessWidget {
                     outlineBorderRadius: 15.r,
                     style: TextStyle(fontSize: 17.sp),
                     keyboardType: TextInputType.phone,
+                    obscureText: true,
                     onCompleted: (pin) {}),
                 const SizedBox(
                   height: 20,
@@ -96,7 +97,8 @@ class VerifyEmailScreen extends StatelessWidget {
                   ),
                   child: CustomButton(
                     onTap: () {
-                      NavigationManager.navigateReplacementToPage(context: context, routeName: 'homeScreen');
+                      NavigationManager.navigateReplacementToPage(
+                          context: context, routeName: 'homeScreen');
                     },
                     buttonText: 'Continue',
                   ),

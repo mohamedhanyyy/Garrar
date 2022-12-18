@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              IconsManager.boat,
+              IconsManager.person,
               color: _currentIndex == 1
                   ? ColorsManager.primary
                   : ColorsManager.black.withOpacity(0.5),

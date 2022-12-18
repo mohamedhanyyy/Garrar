@@ -5,6 +5,8 @@ import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
 import 'package:garrar/features/domestic_order/cubit/domestic_order_cubit.dart';
 
+import '../../../core/widgets/make_order_dialog.dart';
+
 class FinishDomesticOrder extends StatelessWidget {
   late DomesticOrderCubit domesticOrderCubit;
 
@@ -104,7 +106,11 @@ class FinishDomesticOrder extends StatelessWidget {
             decoration: customInputDecoration(hint: 'Add notes if exists'),
           ),
         ),
-        CustomButton(onTap: () {}, buttonText: 'Confirm Order')
+        CustomButton(
+            onTap: () {
+              makeOrderDialog(context: context);
+            },
+            buttonText: 'Confirm Order')
       ],
     );
   }

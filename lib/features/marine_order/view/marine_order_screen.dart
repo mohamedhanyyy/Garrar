@@ -22,6 +22,7 @@ class _MarineOrderScreenState extends State<MarineOrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: activeStep == 0 ? true : false,
         leading: activeStep == 0 ? BackButtonWidget(context: context) : null,
         title: Text(
           'Make Marine Order',
@@ -34,68 +35,68 @@ class _MarineOrderScreenState extends State<MarineOrderScreen> {
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              NumberStepper(
-                lineDotRadius: 1,
-                numbers: const [1, 2, 3, 4],
-                numberStyle: const TextStyle(
-                  color: Colors.white,
-                ),
-                activeStepColor: ColorsManager.primary,
-                activeStepBorderColor: Colors.black,
-                lineColor: Colors.grey,
-                stepColor: Colors.grey,
-                activeStep: activeStep,
-                steppingEnabled: true,
-                enableStepTapping: false,
-                enableNextPreviousButtons: false,
-                onStepReached: (val) {
-                  setState(() {
-                    activeStep = val;
-                  });
-                },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            NumberStepper(
+              lineDotRadius: 1,
+              numbers: const [1, 2, 3, 4],
+              numberStyle: const TextStyle(
+                color: Colors.white,
               ),
-              SizedBox(
-                height: 10.h,
-              ),
-              const Divider(
+              activeStepColor: ColorsManager.primary,
+              activeStepBorderColor: Colors.black,
+              lineColor: Colors.grey,
+              stepColor: Colors.grey,
+              activeStep: activeStep,
+              steppingEnabled: true,
+              enableStepTapping: false,
+              enableNextPreviousButtons: false,
+              onStepReached: (val) {
+                setState(() {
+                  activeStep = val;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: const Divider(
                 height: 1,
                 color: Colors.grey,
                 thickness: 1,
               ),
-              SizedBox(
-                height: 20.h,
-               ),
-             if (activeStep == 0)
-               FirstStep(onTap: () {
-                 setState(() {
-                   activeStep = 1;
-                 });
-               }),
-             if (activeStep == 1)
-               SecondStep(onTap: () {
-                 setState(() {
-                   activeStep = 2;
-                 });
-               }),
-             if (activeStep == 2)
-               ThirdStep(onTap: () {
-                 setState(() {
-                   activeStep = 3;
-                 });
-               }),
-             if (activeStep == 3)
-                FourthStep(onTap: () {
-                  setState(() {
-                    activeStep = 4;
-                  });
-                }),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            if (activeStep == 0)
+              FirstStep(onTap: () {
+                setState(() {
+                  activeStep = 1;
+                });
+              }),
+            if (activeStep == 1)
+              SecondStep(onTap: () {
+                setState(() {
+                  activeStep = 2;
+                });
+              }),
+            if (activeStep == 2)
+              ThirdStep(onTap: () {
+                setState(() {
+                  activeStep = 3;
+                });
+              }),
+            if (activeStep == 3)
+              FourthStep(onTap: () {
+                setState(() {
+                  activeStep = 4;
+                });
+              }),
+          ],
         ),
       ),
     );

@@ -9,6 +9,7 @@ import 'package:garrar/features/marine_order/view/marine_order_screen.dart';
 import 'package:garrar/features/profile/view/profile_screen.dart';
 
 import '../../features/auth/view/screens/change_password_screen.dart';
+import '../../features/complete_order/view/complete_order_screen.dart';
 import '../../features/domestic_order/view/domestic_order_screen.dart';
 import '../../features/my_orders/view/my_orders_screen.dart';
 import '../../features/splash/splash_screen.dart';
@@ -26,6 +27,7 @@ class Routes {
   static const String editProfile = 'editProfileScreen';
   static const String marineOrder = 'marineOrderScreen';
   static const String domesticOrder = 'domesticOrderScreen';
+  static const String completeOrder = 'completeOrderScreen';
 }
 
 class AppRoutes {
@@ -61,13 +63,16 @@ class AppRoutes {
             builder: (BuildContext context) => const MyOrdersScreen());
       case Routes.editProfile:
         return MaterialPageRoute(
-            builder: (BuildContext context) =>   EditProfileScreen());
+            builder: (BuildContext context) => EditProfileScreen());
       case Routes.marineOrder:
         return MaterialPageRoute(
-            builder: (BuildContext context) =>   MarineOrderScreen());
+            builder: (BuildContext context) => MarineOrderScreen());
       case Routes.domesticOrder:
         return MaterialPageRoute(
-            builder: (BuildContext context) =>   DomesticOrderScreen());
+            builder: (BuildContext context) => DomesticOrderScreen());
+      case Routes.completeOrder:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => CompleteOrderScreen());
 
       default:
         return MaterialPageRoute(

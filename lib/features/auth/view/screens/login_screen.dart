@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
+import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/utils/images.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
@@ -24,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String email = "";
   String password = "";
 
-  bool checkBox=false;
+  bool checkBox = false;
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       email = val!;
                     },
                     decoration: customInputDecoration(
-                      hint: 'Enter email',
-                      prefixIcon: (Icons.email),
+                        hint: 'Enter email',
+                        suffixIcon: (Icons.email),
+                        prefix: IconsManager.mailCard,
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
@@ -83,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       obscureText: isVisible,
                       decoration: InputDecoration(
+
                           border: customOutlineInputBorder,
                           enabledBorder: customOutlineInputBorder,
                           focusedErrorBorder: customOutlineInputBorder,
@@ -117,11 +120,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Checkbox(value: checkBox, onChanged: (val) {
-                        setState(() {
-                          checkBox=val!;
-                        });
-                      }),
+                      Checkbox(
+                          value: checkBox,
+                          onChanged: (val) {
+                            setState(() {
+                              checkBox = val!;
+                            });
+                          }),
                       const SizedBox(
                         width: 10,
                       ),
@@ -143,13 +148,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               password: password,
                               context: context);
 
-                          if(checkBox==true){
-
+                          if (checkBox == true) {
                             //todo action
-                          }
-
-                          else {
-
+                          } else {
                             // todo another action
                           }
                         }

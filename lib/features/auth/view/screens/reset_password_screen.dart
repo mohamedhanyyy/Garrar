@@ -5,6 +5,7 @@ import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
 
 import '../../../../../core/widgets/back_button.dart';
+import '../../../../core/utils/icons.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
@@ -44,7 +45,10 @@ class ResetPasswordScreen extends StatelessWidget {
                 ),
                 TextFormField(
                   decoration: customInputDecoration(
-                      hint: 'Enter email', prefixIcon: Icons.email),
+                      hint: 'Enter email',
+                    prefix: IconsManager.mailCard,
+
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/features/domestic_order/cubit/domestic_order_cubit.dart';
 import 'package:garrar/injector.dart';
 
 import '../../../../core/utils/dialouges.dart';
+import '../../../../core/utils/icons.dart';
+import '../../../../core/widgets/custom_input_decoration.dart';
 
 class MainDomesticOrder extends StatefulWidget {
   final Function onTap;
@@ -39,16 +42,16 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
         Padding(
           padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: const Color(0xffFAFAFA),
                 border: Border.all(color: Colors.black)),
-            child: DropdownButton(
+            child: DropdownButtonFormField(
+                focusColor: Colors.transparent,
                 isExpanded: true,
                 hint: const Text('Choose Pick up location'),
                 disabledHint: const Text('Containers type'),
-                underline: const SizedBox.shrink(),
+                decoration: customDropdownDecoration(image: IconsManager.place),
                 borderRadius: BorderRadius.circular(15),
                 items: domesticOrderCubit.locations.map((e) {
                   return DropdownMenuItem(value: e, child: Text(e));
@@ -68,16 +71,15 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
         Padding(
           padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: const Color(0xffFAFAFA),
                 border: Border.all(color: Colors.black)),
-            child: DropdownButton(
+            child: DropdownButtonFormField(
                 isExpanded: true,
                 hint: const Text('Choose Drop off location'),
                 disabledHint: const Text('Containers type'),
-                underline: const SizedBox.shrink(),
+                decoration: customDropdownDecoration(image: IconsManager.place),
                 borderRadius: BorderRadius.circular(15),
                 items: domesticOrderCubit.locations.map((e) {
                   return DropdownMenuItem(value: e, child: Text(e));
@@ -97,16 +99,15 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
         Padding(
           padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: const Color(0xffFAFAFA),
                 border: Border.all(color: Colors.black)),
-            child: DropdownButton(
+            child: DropdownButtonFormField(
                 isExpanded: true,
                 hint: const Text('Choose Drop-Off location'),
                 disabledHint: const Text('Drop-Off'),
-                underline: const SizedBox.shrink(),
+                decoration: customDropdownDecoration(image: IconsManager.place),
                 borderRadius: BorderRadius.circular(15),
                 items: domesticOrderCubit.locations.map((e) {
                   return DropdownMenuItem(value: e, child: Text(e));

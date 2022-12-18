@@ -8,6 +8,7 @@ import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
+import '../../../../core/utils/icons.dart';
 import '../../cubit/auth_cubit.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                     decoration: customInputDecoration(
                       hint: 'Full name',
-                      prefixIcon: (Icons.person),
+                      prefix: IconsManager.person,
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
@@ -82,7 +83,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                       decoration: customInputDecoration(
                         hint: 'Company name',
-                        prefixIcon: (Icons.house),
+                        prefix: IconsManager.building,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
@@ -119,7 +120,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                       decoration: customInputDecoration(
                         hint: 'email',
-                        prefixIcon: (Icons.email),
+                        prefix: IconsManager.mailCard,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
