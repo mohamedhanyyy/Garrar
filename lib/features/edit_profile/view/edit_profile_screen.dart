@@ -5,7 +5,7 @@ import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/back_button.dart';
 
 import '../../../core/utils/colors.dart';
-import '../../../core/widgets/custom_text_field.dart';
+import '../../../core/widgets/custom_input_decoration.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class EditProfileScreen extends StatelessWidget {

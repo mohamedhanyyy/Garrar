@@ -27,6 +27,7 @@ InputDecoration customInputDecoration({
     ),
     fillColor: const Color(0xffFAFAFA),
     filled: true,
+
     prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
     suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
   );

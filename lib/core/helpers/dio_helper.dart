@@ -6,6 +6,7 @@ class DioHelper {
   static const String url = 'BASE_URL';
   static BaseOptions opts = BaseOptions(
     baseUrl: url,
+
     responseType: ResponseType.json,
     headers: {'token': 'Oauth ${PreferencesHelper.getToken()}'},
     connectTimeout: 30000,

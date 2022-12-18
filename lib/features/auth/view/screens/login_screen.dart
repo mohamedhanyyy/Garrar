@@ -6,7 +6,7 @@ import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/utils/images.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
-import 'package:garrar/core/widgets/custom_text_field.dart';
+import 'package:garrar/core/widgets/custom_input_decoration.dart';
 
 import '../../cubit/auth_cubit.dart';
 

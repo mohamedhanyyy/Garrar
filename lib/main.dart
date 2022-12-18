@@ -1,11 +1,11 @@
 import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/helpers/preferences_helper.dart';
 import 'package:garrar/features/auth/cubit/auth_cubit.dart';
+import 'package:garrar/features/domestic_order/cubit/domestic_order_cubit.dart';
 import 'package:garrar/features/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:garrar/features/marine_order/cubit/marine_order_cubit.dart';
 import 'package:garrar/features/my_orders/cubit/my_orders_cubit.dart';
@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
 
     return ScreenUtilInit(
       designSize: const Size(360, 800),
+      minTextAdapt: true,
+      splitScreenMode: true,
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
@@ -53,6 +55,9 @@ class MyApp extends StatelessWidget {
             BlocProvider(
               create: (BuildContext context) => MyOrdersCubit(),
             ),
+            BlocProvider(
+              create: (BuildContext context) => DomesticOrderCubit(),
+            ),
           ],
           child: BackGestureWidthTheme(
             backGestureWidth: BackGestureWidth.fraction(1 / 2),
@@ -61,13 +66,13 @@ class MyApp extends StatelessWidget {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
               child: MaterialApp(
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                locale: context.locale,
                 debugShowCheckedModeBanner: false,
                 theme: appTheme(),
                 title: 'Garrar',
-                initialRoute: Routes.home,
+                initialRoute: PreferencesHelper.getToken() == null ||
+                        PreferencesHelper.getToken() == ''
+                    ? Routes.login
+                    : Routes.home,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
               ),
             ),

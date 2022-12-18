@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/dialouges.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../cubit/marine_order_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThirdStep extends StatefulWidget {
   List<String> data = [
@@ -20,13 +22,13 @@ class ThirdStep extends StatefulWidget {
 }
 
 class _ThirdStepState extends State<ThirdStep> {
-  String getOutLocation = '';
+  late final MarineOrderCubit marineOrderCubit;
 
-  String getInLocation = '';
-
-  String destinationLocation = '';
-
-  String dryPortLocation = '';
+  @override
+  initState() {
+    super.initState();
+    marineOrderCubit = context.read<MarineOrderCubit>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +56,12 @@ class _ThirdStepState extends State<ThirdStep> {
                 items: widget.data.map((e) {
                   return DropdownMenuItem(value: e, child: Text(e));
                 }).toList(),
-                value:
-                    getOutLocation != "" ? getOutLocation : widget.data.first,
+                value: marineOrderCubit.getOutLocation != ""
+                    ? marineOrderCubit.getOutLocation
+                    : widget.data.first,
                 onChanged: (String? val) {
                   setState(() {
-                    getOutLocation = val!;
+                    marineOrderCubit.getOutLocation = val!;
                   });
                 }),
           ),
@@ -80,12 +83,12 @@ class _ThirdStepState extends State<ThirdStep> {
                 items: widget.data.map<DropdownMenuItem<String>>((String e) {
                   return DropdownMenuItem<String>(value: e, child: Text(e));
                 }).toList(),
-                value: destinationLocation != ''
-                    ? destinationLocation
+                value: marineOrderCubit.destinationLocation != ''
+                    ? marineOrderCubit.destinationLocation
                     : widget.data.first,
                 onChanged: (String? val) {
                   setState(() {
-                    destinationLocation = val!;
+                    marineOrderCubit.destinationLocation = val!;
                   });
                 }),
           ),
@@ -107,11 +110,12 @@ class _ThirdStepState extends State<ThirdStep> {
                 items: widget.data.map<DropdownMenuItem<String>>((String e) {
                   return DropdownMenuItem<String>(value: e, child: Text(e));
                 }).toList(),
-                value:
-                    dryPortLocation != '' ? dryPortLocation : widget.data.first,
+                value: marineOrderCubit.dryPortLocation != ''
+                    ? marineOrderCubit.dryPortLocation
+                    : widget.data.first,
                 onChanged: (String? val) {
                   setState(() {
-                    dryPortLocation = val!;
+                    marineOrderCubit.dryPortLocation = val!;
                   });
                 }),
           ),
@@ -133,20 +137,22 @@ class _ThirdStepState extends State<ThirdStep> {
                 items: widget.data.map<DropdownMenuItem<String>>((String e) {
                   return DropdownMenuItem<String>(value: e, child: Text(e));
                 }).toList(),
-                value: getInLocation != '' ? getInLocation : widget.data.first,
+                value: marineOrderCubit.getInLocation != ''
+                    ? marineOrderCubit.getInLocation
+                    : widget.data.first,
                 onChanged: (String? val) {
                   setState(() {
-                    getInLocation = val!;
+                    marineOrderCubit.getInLocation = val!;
                   });
                 }),
           ),
         ),
         CustomButton(
           onTap: () {
-            if (getInLocation != '' &&
-                destinationLocation != '' &&
-                destinationLocation != '' &&
-                dryPortLocation != '') {
+            if (marineOrderCubit.getInLocation != '' &&
+                marineOrderCubit.destinationLocation != '' &&
+                marineOrderCubit.destinationLocation != '' &&
+                marineOrderCubit.dryPortLocation != '') {
               widget.onTap();
             } else {
               showFillDataDialog(context: context);

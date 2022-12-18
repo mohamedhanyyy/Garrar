@@ -1,34 +1,34 @@
 import 'dart:io';
 
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/dialouges.dart';
+import 'package:garrar/features/marine_order/cubit/marine_order_cubit.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../../core/widgets/custom_button.dart';
-import '../../../../core/widgets/custom_text_field.dart';
+import '../../../../core/widgets/custom_input_decoration.dart';
 import '../../../../injector.dart';
 
 class SecondStep extends StatefulWidget {
-  Function onTap;
+  final Function onTap;
 
-  SecondStep({super.key, required this.onTap});
+  const SecondStep({super.key, required this.onTap});
 
   @override
   State<SecondStep> createState() => _SecondStepState();
 }
 
 class _SecondStepState extends State<SecondStep> {
-  String? shippingType;
-
-  String? arrivalTime;
-
-  XFile? bookingFile;
-
-  ImagePicker picker = ImagePicker();
   Dialogues dialogues = locator<Dialogues>();
+
+  late final MarineOrderCubit marineOrderCubit;
+
+  @override
+  initState() {
+    super.initState();
+    marineOrderCubit = context.read<MarineOrderCubit>();
+  }
 
   final formKey = GlobalKey<FormState>();
 
@@ -53,10 +53,10 @@ class _SecondStepState extends State<SecondStep> {
                 return null;
               },
               onChanged: (val) {
-                shippingType = val;
+                marineOrderCubit.shippingType = val;
               },
               onSaved: (val) {
-                shippingType = val!;
+                marineOrderCubit.shippingType = val!;
               },
               decoration: customInputDecoration(
                   hint: 'Enter booking number (BK)',
@@ -65,44 +65,27 @@ class _SecondStepState extends State<SecondStep> {
           ),
           Text('Customs Type',
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
-          bookingFile == null
-              ? Padding(
-                  padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
-                  child: InkWell(
-                    onTap: () async {
-                      XFile? image;
-
-                      dialogues.cameraDialog(
-                          context: context,
-                          onCameraTap: () async {
-                            image = await picker.pickImage(
-                                source: ImageSource.camera);
-                          },
-                          onGalleryTap: () async {
-                            image = await picker.pickImage(
-                                source: ImageSource.gallery);
-                          });
-                      if (image != null) {
-                        setState(() {
-                          bookingFile = image;
-                        });
-                      }
-                    },
-                    child: TextField(
-                      enabled: false,
-                      decoration: customInputDecoration(
-                        hint: 'Choose Customs Type',
-                        prefixIcon: Icons.file_copy_sharp,
-                        suffixIcon: Icons.upload,
-                      ),
-                    ),
-                  ),
-                )
-              : Image.file(
-                  File(bookingFile!.path),
-                  height: 100,
-                  width: 100,
-                ),
+          Padding(
+            padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
+            child: TextFormField(
+              validator: (val) {
+                if (val!.isEmpty) {
+                  return 'Empty custom type';
+                }
+                return null;
+              },
+              onChanged: (val) {
+                marineOrderCubit.customType = val;
+              },
+              onSaved: (val) {
+                marineOrderCubit.customType = val!;
+              },
+              decoration: customInputDecoration(
+                  hint: 'Enter custom type',
+                  prefixIcon: Icons.circle,
+              ),
+            ),
+          ),
           Text('Arrival Time',
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
           Padding(
@@ -117,20 +100,22 @@ class _SecondStepState extends State<SecondStep> {
                   lastDate: DateTime(2023),
                 ).then((value) {
                   setState(() {
-                    arrivalTime = value.toString();
+                    marineOrderCubit.arrivalTime = value.toString();
                   });
                 });
               },
               decoration: customInputDecoration(
-                  hint: arrivalTime ?? 'Set destination arrival time'),
+                  hint: marineOrderCubit.arrivalTime ??
+                      'Set destination arrival time'),
             ),
           ),
           CustomButton(
             onTap: () {
               if (formKey.currentState!.validate() &&
-                  shippingType != null &&
-                  arrivalTime != null &&
-                  bookingFile != null) {
+                  marineOrderCubit.shippingType != null &&
+                  marineOrderCubit.arrivalTime != null
+                  && marineOrderCubit.customType != null
+              ) {
                 formKey.currentState!.save();
                 widget.onTap();
               } else {

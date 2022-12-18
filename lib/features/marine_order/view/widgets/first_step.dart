@@ -1,41 +1,36 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
-import 'package:garrar/core/widgets/custom_text_field.dart';
+import 'package:garrar/core/widgets/custom_input_decoration.dart';
+import 'package:garrar/features/marine_order/cubit/marine_order_cubit.dart';
 import 'package:garrar/injector.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/utils/dialouges.dart';
 
 class FirstStep extends StatefulWidget {
-  Function onTap;
+  final Function onTap;
 
-  FirstStep({super.key, required this.onTap});
+  const FirstStep({super.key, required this.onTap});
 
   @override
   State<FirstStep> createState() => _FirstStepState();
 }
 
 class _FirstStepState extends State<FirstStep> {
-  int containerNumber = 0;
-  String containerType = '';
-  String shippingLine = '';
-  String bookingNumber = '';
-  XFile? bookingFile;
-  ImagePicker picker = ImagePicker();
-
-  List<String> data = [
-    'cairo',
-    'giza',
-    'alex',
-    'matroh',
-    'fayoum',
-  ];
-
   Dialogues dialogues = locator<Dialogues>();
   final formKey = GlobalKey<FormState>();
+
+  late final MarineOrderCubit marineOrderCubit;
+
+  @override
+  initState() {
+    super.initState();
+    marineOrderCubit = context.read<MarineOrderCubit>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +53,10 @@ class _FirstStepState extends State<FirstStep> {
                 return null;
               },
               onChanged: (x) {
-                bookingNumber = x;
+                marineOrderCubit.bookingNumber = x;
               },
               onSaved: (val) {
-                bookingNumber = val!;
+                marineOrderCubit.bookingNumber = val!;
               },
               decoration: customInputDecoration(
                   hint: 'Enter booking number (BK)',
@@ -70,7 +65,7 @@ class _FirstStepState extends State<FirstStep> {
           ),
           Text('Booking file',
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
-          bookingFile == null
+          marineOrderCubit.bookingFirstFile == null
               ? Padding(
                   padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
                   child: InkWell(
@@ -80,17 +75,16 @@ class _FirstStepState extends State<FirstStep> {
                       dialogues.cameraDialog(
                           context: context,
                           onCameraTap: () async {
-                            image = await picker.pickImage(
-                                source: ImageSource.camera);
+                            image = await marineOrderCubit.picker
+                                .pickImage(source: ImageSource.camera);
                           },
                           onGalleryTap: () async {
-                            image = await picker.pickImage(
-                                source: ImageSource.gallery);
+                            image = await marineOrderCubit.picker
+                                .pickImage(source: ImageSource.gallery);
                           });
                       if (image != null) {
-                        setState(() {
-                          bookingFile = image;
-                        });
+                        marineOrderCubit.bookingFirstFile = image;
+                        setState(() {});
                       }
                     },
                     child: TextFormField(
@@ -104,7 +98,7 @@ class _FirstStepState extends State<FirstStep> {
                   ),
                 )
               : Image.file(
-                  File(bookingFile!.path),
+                  File(marineOrderCubit.bookingFirstFile!.path),
                   height: 100,
                   width: 100,
                 ),
@@ -127,10 +121,12 @@ class _FirstStepState extends State<FirstStep> {
                   items: ['Import', 'Export', 'Other'].map((e) {
                     return DropdownMenuItem(value: e, child: Text(e));
                   }).toList(),
-                  value: containerType != "" ? containerType : 'Import',
+                  value: marineOrderCubit.containerType != ""
+                      ? marineOrderCubit.containerType
+                      : 'Import',
                   onChanged: (String? val) {
                     setState(() {
-                      containerType = val!;
+                      marineOrderCubit.containerType = val!;
                     });
                   }),
             ),
@@ -144,7 +140,7 @@ class _FirstStepState extends State<FirstStep> {
             child: TextFormField(
               keyboardType: TextInputType.number,
               onChanged: (val) {
-                containerNumber = int.parse(val);
+                marineOrderCubit.containerNumber = int.parse(val);
               },
               validator: (val) {
                 if (val!.isEmpty) {
@@ -153,7 +149,7 @@ class _FirstStepState extends State<FirstStep> {
                 return null;
               },
               onSaved: (val) {
-                containerNumber = int.parse(val!);
+                marineOrderCubit.containerNumber = int.parse(val!);
               },
               decoration: customInputDecoration(
                 hint: 'Container Count',
@@ -176,31 +172,34 @@ class _FirstStepState extends State<FirstStep> {
                   disabledHint: const Text('Choose Shipping line'),
                   underline: const SizedBox.shrink(),
                   borderRadius: BorderRadius.circular(15),
-                  items: data.map((e) {
+                  items: marineOrderCubit.data.map((e) {
                     return DropdownMenuItem(value: e, child: Text(e));
                   }).toList(),
-                  value: shippingLine != "" ? shippingLine : data.first,
+                  value: marineOrderCubit.shippingLine != ""
+                      ? marineOrderCubit.shippingLine
+                      : marineOrderCubit.data.first,
                   onChanged: (String? val) {
                     setState(() {
-                      shippingLine = val!;
+                      marineOrderCubit.shippingLine = val!;
                     });
                   }),
             ),
           ),
           CustomButton(
             onTap: () {
-              print(bookingFile);
-              print(containerNumber);
-              print(containerType);
-              print(shippingLine);
-              print(bookingNumber);
+              print(marineOrderCubit.bookingFirstFile);
+              print(marineOrderCubit.containerNumber);
+              print(marineOrderCubit.containerType);
+              print(marineOrderCubit.shippingLine);
+              print(marineOrderCubit.bookingNumber);
 
               if (formKey.currentState!.validate() &&
-                  containerNumber != 0 &&
-                  containerType != '' &&
-                  shippingLine != '' &&
-                  bookingNumber != '' &&
-                  bookingFile != null) {
+                      marineOrderCubit.containerNumber != 0 &&
+                      marineOrderCubit.containerType != '' &&
+                      marineOrderCubit.shippingLine != '' &&
+                      marineOrderCubit.bookingNumber != ''
+                  //&& marineOrderCubit.bookingFirstFile != null
+                  ) {
                 formKey.currentState!.save();
                 widget.onTap();
               } else {

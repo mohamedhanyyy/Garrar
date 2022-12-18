@@ -9,6 +9,7 @@ import 'package:garrar/features/marine_order/view/marine_order_screen.dart';
 import 'package:garrar/features/profile/view/profile_screen.dart';
 
 import '../../features/auth/view/screens/change_password_screen.dart';
+import '../../features/domestic_order/view/domestic_order_screen.dart';
 import '../../features/my_orders/view/my_orders_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
@@ -24,6 +25,7 @@ class Routes {
   static const String myOrders = 'myOrdersScreen';
   static const String editProfile = 'editProfileScreen';
   static const String marineOrder = 'marineOrderScreen';
+  static const String domesticOrder = 'domesticOrderScreen';
 }
 
 class AppRoutes {
@@ -63,6 +65,9 @@ class AppRoutes {
       case Routes.marineOrder:
         return MaterialPageRoute(
             builder: (BuildContext context) =>   MarineOrderScreen());
+      case Routes.domesticOrder:
+        return MaterialPageRoute(
+            builder: (BuildContext context) =>   DomesticOrderScreen());
 
       default:
         return MaterialPageRoute(

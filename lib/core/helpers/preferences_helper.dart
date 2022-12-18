@@ -11,7 +11,7 @@ class PreferencesHelper {
     await preferences?.setString("token", token);
   }
 
-  static String getToken() {
+  static String? getToken() {
     return preferences?.getString("token") ?? '';
   }
 

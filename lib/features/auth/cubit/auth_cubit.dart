@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:garrar/core/config/navigation.dart';
+import 'package:garrar/core/helpers/preferences_helper.dart';
 import 'package:garrar/features/auth/cubit/auth_state.dart';
 
 class AuthCubit extends Cubit<LoginState> {
@@ -9,6 +10,8 @@ class AuthCubit extends Cubit<LoginState> {
   void login({required String email, required String password,    required BuildContext context,
   }) {
     //todo here
+    PreferencesHelper.saveToken(token: 'token');
+
     NavigationManager.navigateReplacementToPage(context: context, routeName: 'verifyEmailScreen');
 
   }
@@ -21,6 +24,10 @@ class AuthCubit extends Cubit<LoginState> {
     required String phoneNumber,
     required BuildContext context,
   }) {
+
+
+
+    PreferencesHelper.saveToken(token: 'token');
     //todo here
     NavigationManager.navigateReplacementToPage(context: context, routeName: 'verifyEmailScreen');
 

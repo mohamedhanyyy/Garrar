@@ -5,7 +5,7 @@ import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/utils/images.dart';
- import '../../../core/widgets/custom_text_field.dart';
+ import '../../../core/widgets/custom_input_decoration.dart';
 
 class MyOrdersScreen extends StatefulWidget {
   const MyOrdersScreen({Key? key}) : super(key: key);
@@ -47,7 +47,10 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: GestureDetector(
               child: SvgPicture.asset(IconsManager.shipping),
-              onTap: () {},
+              onTap: () {
+                NavigationManager.navigateToPage(context: context, routeName: 'domesticOrderScreen');
+
+              },
             ),
           ),
         ],
