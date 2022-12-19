@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
@@ -13,6 +14,8 @@ class VerifyEmailScreen extends StatelessWidget {
   final OtpFieldController otpController = OtpFieldController();
 
   VerifyEmailScreen({super.key});
+
+  String optValue='';
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +49,19 @@ class VerifyEmailScreen extends StatelessWidget {
                   ),
                 ),
                 OTPTextField(
+                  onChanged: (val){
+                   optValue=val;
+                  },
                     otpFieldStyle: OtpFieldStyle(
-                        borderColor: ColorsManager.primary,
-                        backgroundColor:
-                            ColorsManager.primary.withOpacity(0.2)),
+                      borderColor: ColorsManager.primary,
+                      backgroundColor: ColorsManager.primary.withOpacity(0.2),
+                      focusBorderColor: Colors.green,
+                      disabledBorderColor: Colors.grey,
+
+                    ),
+
                     controller: otpController,
-                    length: 5,
+                    length: 6,
                     width: context.width,
                     textFieldAlignment: MainAxisAlignment.spaceAround,
                     fieldWidth: 45.w,
@@ -59,46 +69,50 @@ class VerifyEmailScreen extends StatelessWidget {
                     outlineBorderRadius: 15.r,
                     style: TextStyle(fontSize: 17.sp),
                     keyboardType: TextInputType.phone,
-                    obscureText: true,
-                    onCompleted: (pin) {}),
-                const SizedBox(
-                  height: 20,
+                ),
+
+                SizedBox(
+                  height: 20.sp,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Didnt receive OTP',
+                    Text(
+                      'Didnt receive OTP ?',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
-                        color: ColorsManager.gray,
+                        color: ColorsManager.black,
                       ),
                     ),
-                    const SizedBox(
-                      width: 13,
+                      SizedBox(
+                      width: 13.w,
                     ),
                     InkWell(
                       onTap: () {},
-                      child: const Text(
+                      child: Text(
                         'Try again',
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
                           color: ColorsManager.primary,
+                          decoration: TextDecoration.underline,
                         ),
                       ),
                     )
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                    bottom: 38,
+                  padding: EdgeInsets.only(
+                    top: 20.h,
+                    bottom: 38.h,
                   ),
                   child: CustomButton(
                     onTap: () {
-                      NavigationManager.navigateReplacementToPage(
+                      if(optValue.length==6 ) {
+                        NavigationManager.navigateReplacementToPage(
                           context: context, routeName: 'homeScreen');
+                      }
                     },
                     buttonText: 'Continue',
                   ),

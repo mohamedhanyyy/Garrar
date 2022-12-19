@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:garrar/core/utils/icons.dart';
 
 InputDecoration customInputDecoration({
   String? hint,
-  IconData? suffixIcon,
-  IconData? prefixIcon,
-  String? prefix,
+  String? suffixIcon,
+  String? prefixIcon,
+  Color? hintColor,
 }) {
   return InputDecoration(
     hintText: hint,
+
+    hintStyle: TextStyle(
+      color: hintColor ?? Colors.black,
+    ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(9),
     ),
@@ -35,17 +38,27 @@ InputDecoration customInputDecoration({
       minHeight: 2.h,
       minWidth: 10.w,
     ),
-    suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
-    prefixIcon: prefix != null
-        ? InkWell(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
-              child: SizedBox(
-                height: 15,
-                child: SvgPicture.asset(prefix),
-              ),
+    suffixIconConstraints: BoxConstraints(
+      minHeight: 2.h,
+      minWidth: 10.w,
+    ),
+    suffixIcon: suffixIcon != null
+        ? Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8),
+            child: SizedBox(
+              height: 15,
+              child: SvgPicture.asset(suffixIcon),
             ),
-            onTap: () {})
+          )
+        : null,
+    prefixIcon: prefixIcon != null
+        ? Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8),
+            child: SizedBox(
+              height: 15,
+              child: SvgPicture.asset(prefixIcon),
+            ),
+          )
         : null,
   );
 }
@@ -54,10 +67,8 @@ OutlineInputBorder customOutlineInputBorder = OutlineInputBorder(
   borderRadius: BorderRadius.circular(9),
 );
 
-
-InputDecoration customDropdownDecoration({required String image}){
+InputDecoration customDropdownDecoration({required String image}) {
   return InputDecoration(
-
     border: const UnderlineInputBorder(
       borderSide: BorderSide(color: Colors.white),
     ),

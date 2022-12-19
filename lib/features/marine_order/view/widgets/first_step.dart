@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
@@ -27,6 +26,7 @@ class _FirstStepState extends State<FirstStep> {
   final formKey = GlobalKey<FormState>();
 
   late final MarineOrderCubit marineOrderCubit;
+  ImagePicker picker = ImagePicker();
 
   @override
   initState() {
@@ -40,7 +40,6 @@ class _FirstStepState extends State<FirstStep> {
       key: formKey,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -65,7 +64,7 @@ class _FirstStepState extends State<FirstStep> {
                 },
                 decoration: customInputDecoration(
                     hint: 'Enter booking number (BK)',
-                    prefixIcon: Icons.fingerprint_rounded),
+                    prefixIcon: IconsManager.fingerPrint),
               ),
             ),
             Text('Booking file',
@@ -75,56 +74,79 @@ class _FirstStepState extends State<FirstStep> {
                     padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
                     child: InkWell(
                       onTap: () async {
-                        XFile? image;
-
                         dialogues.cameraDialog(
                             context: context,
                             onCameraTap: () async {
-                              image = await marineOrderCubit.picker
-                                  .pickImage(source: ImageSource.camera);
+                              XFile? image = await picker.pickImage(
+                                  source: ImageSource.camera);
+                              if (image != null) {
+                                setState(() {
+                                  marineOrderCubit.bookingFirstFile = image;
+                                });
+                              }
                             },
                             onGalleryTap: () async {
-                              image = await marineOrderCubit.picker
-                                  .pickImage(source: ImageSource.gallery);
+                              XFile? image = await picker.pickImage(
+                                  source: ImageSource.gallery);
+                              if (image != null) {
+                                setState(() {
+                                  marineOrderCubit.bookingFirstFile = image;
+                                });
+                              }
                             });
-                        if (image != null) {
-                          marineOrderCubit.bookingFirstFile = image;
-                          setState(() {});
-                        }
                       },
                       child: TextFormField(
                         enabled: false,
                         decoration: customInputDecoration(
-                          hint: 'Enter booking file',
-                          suffixIcon: Icons.upload,
-                          prefix: IconsManager.document
-                        ),
+                            hint: 'Enter booking file',
+                            suffixIcon: IconsManager.upload,
+                            prefixIcon: IconsManager.document,
+                         ),
                       ),
                     ),
                   )
-                : Image.file(
-                    File(marineOrderCubit.bookingFirstFile!.path),
-                    height: 100,
-                    width: 100,
+                : Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.h),
+                    child: Stack(
+                      alignment: Alignment.topRight,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.file(
+                            File(marineOrderCubit.bookingFirstFile!.path),
+                            height: 120.h,
+                            width: 120.w,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              marineOrderCubit.bookingFirstFile = null;
+                              setState(() {});
+                            },
+                            icon: const Icon(
+                              Icons.clear,
+                              color: Colors.red,
+                            ))
+                      ],
+                    ),
                   ),
             Text('Containers type',
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             Padding(
               padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
               child: Container(
-                 decoration: BoxDecoration(
+                decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: const Color(0xffFAFAFA),
                     border: Border.all(color: Colors.black)),
                 child: DropdownButtonFormField(
-                    decoration: customDropdownDecoration( image: IconsManager.place),
-
+                    decoration:
+                        customDropdownDecoration(image: IconsManager.place),
                     isExpanded: true,
                     hint: const Text('Containers type'),
                     disabledHint: const Text('Containers type'),
-
                     borderRadius: BorderRadius.circular(15),
-
                     items: ['Import', 'Export', 'Other'].map((e) {
                       return DropdownMenuItem(value: e, child: Text(e));
                     }).toList(),
@@ -176,7 +198,8 @@ class _FirstStepState extends State<FirstStep> {
                     isExpanded: true,
                     hint: const Text('Shipping line'),
                     disabledHint: const Text('Choose Shipping line'),
-                    decoration: customDropdownDecoration( image: IconsManager.place),
+                    decoration:
+                        customDropdownDecoration(image: IconsManager.place),
                     borderRadius: BorderRadius.circular(15),
                     items: marineOrderCubit.data.map((e) {
                       return DropdownMenuItem(value: e, child: Text(e));

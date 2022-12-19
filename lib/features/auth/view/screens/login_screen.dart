@@ -63,9 +63,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       email = val!;
                     },
                     decoration: customInputDecoration(
-                        hint: 'Enter email',
-                        suffixIcon: (Icons.email),
-                        prefix: IconsManager.mailCard,
+                      hint: 'Email',
+                      prefixIcon: IconsManager.mailCard,
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
@@ -85,7 +84,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       obscureText: isVisible,
                       decoration: InputDecoration(
-
                           border: customOutlineInputBorder,
                           enabledBorder: customOutlineInputBorder,
                           focusedErrorBorder: customOutlineInputBorder,
@@ -94,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           disabledBorder: customOutlineInputBorder,
                           filled: true,
                           fillColor: ColorsManager.gray,
-                          hintText: 'Enter password',
+                          hintText: 'Password',
                           prefixIcon: const Icon(Icons.lock),
                           suffixIcon: IconButton(
                             onPressed: () {

@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
                 initialRoute: PreferencesHelper.getToken() == null ||
                         PreferencesHelper.getToken() == ''
                     ? Routes.login
-                    : Routes.home,
+                    : Routes.verifyEmail,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
               ),
             ),

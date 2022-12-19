@@ -63,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                     decoration: customInputDecoration(
                       hint: 'Full name',
-                      prefix: IconsManager.person,
+                      prefixIcon: IconsManager.person,
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
@@ -83,7 +83,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                       decoration: customInputDecoration(
                         hint: 'Company name',
-                        prefix: IconsManager.building,
+                        prefixIcon: IconsManager.building,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
@@ -119,8 +119,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         email = val!;
                       },
                       decoration: customInputDecoration(
-                        hint: 'email',
-                        prefix: IconsManager.mailCard,
+                        hint: 'Email',
+                        prefixIcon: IconsManager.mailCard,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {

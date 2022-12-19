@@ -61,7 +61,7 @@ class _SecondStepState extends State<SecondStep> {
                 },
                 decoration: customInputDecoration(
                     hint: 'Enter booking number (BK)',
-                    prefix: IconsManager.swap),
+                    prefixIcon: IconsManager.swap),
               ),
             ),
             Text('Customs Type',
@@ -82,9 +82,8 @@ class _SecondStepState extends State<SecondStep> {
                   marineOrderCubit.customType = val!;
                 },
                 decoration: customInputDecoration(
-
-                    hint: 'Choose custom type',
-                  prefix: IconsManager.worldLock,
+                  hint: 'Choose custom type',
+                  prefixIcon: IconsManager.worldLock,
                 ),
               ),
             ),
@@ -107,7 +106,7 @@ class _SecondStepState extends State<SecondStep> {
                   });
                 },
                 decoration: customInputDecoration(
-                  prefix: IconsManager.date,
+                    prefixIcon: IconsManager.date,
                     hint: marineOrderCubit.arrivalTime ??
                         'Set destination arrival time'),
               ),
@@ -116,9 +115,8 @@ class _SecondStepState extends State<SecondStep> {
               onTap: () {
                 if (formKey.currentState!.validate() &&
                     marineOrderCubit.shippingType != null &&
-                    marineOrderCubit.arrivalTime != null
-                    && marineOrderCubit.customType != null
-                ) {
+                    marineOrderCubit.arrivalTime != null &&
+                    marineOrderCubit.customType != null) {
                   formKey.currentState!.save();
                   widget.onTap();
                 } else {

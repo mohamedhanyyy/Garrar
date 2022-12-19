@@ -14,8 +14,8 @@ class ResetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:
-              SizedBox(width: 18, height: 12, child: BackButtonWidget(context: context)),
+        leading: SizedBox(
+            width: 18, height: 12, child: BackButtonWidget(context: context)),
         title: Text(
           "Reset Password",
           style: TextStyle(
@@ -45,9 +45,8 @@ class ResetPasswordScreen extends StatelessWidget {
                 ),
                 TextFormField(
                   decoration: customInputDecoration(
-                      hint: 'Enter email',
-                    prefix: IconsManager.mailCard,
-
+                    hint: 'Enter email',
+                    prefixIcon: IconsManager.mailCard,
                   ),
                 ),
                 Padding(

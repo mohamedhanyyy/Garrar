@@ -68,7 +68,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                   padding: EdgeInsets.symmetric(vertical: 27.h),
                   child: TextField(
                     decoration: customInputDecoration(
-                      prefixIcon: Icons.search,
+                      prefixIcon: IconsManager.search,
                       hint: 'Enter booking number (BK)',
                     ),
                   ),

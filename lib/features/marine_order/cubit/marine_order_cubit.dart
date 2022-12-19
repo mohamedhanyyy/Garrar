@@ -7,7 +7,6 @@ class MarineOrderCubit extends Cubit<MarineOrderState> {
 
   //common step variables
 
-  ImagePicker picker = ImagePicker();
 
   List<String> data = [
     'cairo',

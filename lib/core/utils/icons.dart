@@ -18,4 +18,7 @@ class IconsManager {
   static String building = '$iconPath/building.svg';
   static String document = '$iconPath/document.svg';
   static String swap = '$iconPath/swap.svg';
+  static String search = '$iconPath/search.svg';
+  static String upload = '$iconPath/upload.svg';
+  static String fingerPrint = '$iconPath/fingerprint.svg';
 }

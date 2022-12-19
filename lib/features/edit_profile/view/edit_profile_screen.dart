@@ -56,7 +56,7 @@ class EditProfileScreen extends StatelessWidget {
                     },
                     decoration: customInputDecoration(
                       hint: 'Edit name',
-                      prefix: IconsManager.person,
+                      prefixIcon: IconsManager.person,
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
@@ -76,7 +76,7 @@ class EditProfileScreen extends StatelessWidget {
                       },
                       decoration: customInputDecoration(
                         hint: 'Edit Company name',
-                        prefix: IconsManager.building,
+                        prefixIcon: IconsManager.building,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
@@ -96,7 +96,7 @@ class EditProfileScreen extends StatelessWidget {
                       },
                       decoration: customInputDecoration(
                         hint: 'Edit email',
-                        prefix: IconsManager.mailCard,
+                        prefixIcon: IconsManager.mailCard,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
