@@ -237,6 +237,8 @@ class _FirstStepState extends State<FirstStep> {
               },
               buttonText: 'Continue',
             ),
+            SizedBox(height: 20.h),
+
           ],
         ),
       ),

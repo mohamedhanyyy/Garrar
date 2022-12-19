@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/features/domestic_order/cubit/domestic_order_cubit.dart';
 import 'package:garrar/injector.dart';
@@ -134,6 +133,8 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
           },
           buttonText: 'Continue',
         ),
+        SizedBox(height: 20.h),
+
       ],
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/utils/dialouges.dart';
 import 'package:garrar/features/marine_order/cubit/marine_order_cubit.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/utils/icons.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -22,6 +23,7 @@ class _SecondStepState extends State<SecondStep> {
   Dialogues dialogues = locator<Dialogues>();
 
   late final MarineOrderCubit marineOrderCubit;
+  String? formattedDate;
 
   @override
   initState() {
@@ -90,7 +92,7 @@ class _SecondStepState extends State<SecondStep> {
             Text('Arrival Time',
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             Padding(
-              padding: EdgeInsets.only(top: 10.h, bottom: 160.h),
+              padding: EdgeInsets.only(top: 10.h, bottom: 20.h),
               child: TextFormField(
                 enabled: true,
                 onTap: () {
@@ -100,15 +102,16 @@ class _SecondStepState extends State<SecondStep> {
                     firstDate: DateTime(2022),
                     lastDate: DateTime(2023),
                   ).then((value) {
+                    marineOrderCubit.arrivalTime = value.toString();
+
                     setState(() {
-                      marineOrderCubit.arrivalTime = value.toString();
+                      formattedDate = DateFormat('yyyy-MM-dd').format(value!);
                     });
                   });
                 },
                 decoration: customInputDecoration(
                     prefixIcon: IconsManager.date,
-                    hint: marineOrderCubit.arrivalTime ??
-                        'Set destination arrival time'),
+                    hint: formattedDate ?? 'Set destination arrival time'),
               ),
             ),
             CustomButton(
@@ -125,6 +128,7 @@ class _SecondStepState extends State<SecondStep> {
               },
               buttonText: 'Continue',
             ),
+            SizedBox(height: 20.h),
           ],
         ),
       ),

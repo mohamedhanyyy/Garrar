@@ -10,7 +10,7 @@ import '../../../core/widgets/make_order_dialog.dart';
 class FinishDomesticOrder extends StatelessWidget {
   late DomesticOrderCubit domesticOrderCubit;
 
-  Function onTap;
+  final Function onTap;
 
   FinishDomesticOrder({super.key, required this.onTap});
 
@@ -110,7 +110,8 @@ class FinishDomesticOrder extends StatelessWidget {
             onTap: () {
               makeOrderDialog(context: context);
             },
-            buttonText: 'Confirm Order')
+            buttonText: 'Confirm Order'),
+        SizedBox(height: 20.h),
       ],
     );
   }

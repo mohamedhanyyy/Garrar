@@ -106,9 +106,10 @@ class _FourthStepState extends State<FourthStep> {
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(15),  border: Border.all(
-                color: Colors.black,
-              ),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  color: Colors.black,
+                ),
               ),
               padding: EdgeInsets.only(
                   left: 20.w, top: 16.h, bottom: 16.h, right: 20.w),
@@ -261,13 +262,15 @@ class _FourthStepState extends State<FourthStep> {
             child: TextField(
               maxLines: 3,
               decoration: customInputDecoration(hint: 'Add notes if exists'),
-
             ),
           ),
-          CustomButton(onTap: () {
-            makeOrderDialog(context: context);
-
-          }, buttonText: 'Confirm Order')
+          CustomButton(
+              onTap: () {
+                makeOrderDialog(context: context);
+              },
+              buttonText: 'Confirm Order'),
+          SizedBox(height: 20.h),
+        
         ],
       ),
     );

@@ -164,7 +164,8 @@ class _ThirdStepState extends State<ThirdStep> {
               }
             },
             buttonText: 'Continue',
-          ),
+          ),            SizedBox(height: 20.h),
+
         ],
       ),
     );
