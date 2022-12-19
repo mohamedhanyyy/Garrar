@@ -160,7 +160,7 @@ class EditProfileScreen extends StatelessWidget {
                                 context: context,
                                 routeName: "changePasswordScreen");
                           },
-                          child: const Text("Change Password"),
+                          child: const Text("Change Password",textAlign: TextAlign.center),
                         ),
                       ),
                     ],

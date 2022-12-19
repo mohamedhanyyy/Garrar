@@ -70,10 +70,7 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 theme: appTheme(),
                 title: 'Garrar',
-                initialRoute: PreferencesHelper.getToken() == null ||
-                        PreferencesHelper.getToken() == ''
-                    ? Routes.login
-                    : Routes.verifyEmail,
+                initialRoute: Routes.initialRoute,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
               ),
             ),

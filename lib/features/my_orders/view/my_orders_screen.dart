@@ -5,8 +5,7 @@ import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/utils/images.dart';
-
-import '../../../core/widgets/custom_input_decoration.dart';
+ import '../../../core/widgets/custom_input_decoration.dart';
 
 class MyOrdersScreen extends StatefulWidget {
   const MyOrdersScreen({Key? key}) : super(key: key);
@@ -41,7 +40,8 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
           GestureDetector(
             child: SvgPicture.asset(IconsManager.boat),
             onTap: () {
-              NavigationManager.navigateToPage(context: context, routeName: 'marineOrderScreen');
+              NavigationManager.navigateToPage(
+                  context: context, routeName: 'marineOrderScreen');
             },
           ),
           Padding(
@@ -49,8 +49,8 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
             child: GestureDetector(
               child: SvgPicture.asset(IconsManager.shipping),
               onTap: () {
-                NavigationManager.navigateToPage(context: context, routeName: 'domesticOrderScreen');
-
+                NavigationManager.navigateToPage(
+                    context: context, routeName: 'domesticOrderScreen');
               },
             ),
           ),
@@ -65,7 +65,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 27.h),
+                  padding: EdgeInsets.only(top: 27.h,bottom: 20.h),
                   child: TextField(
                     decoration: customInputDecoration(
                       prefixIcon: IconsManager.search,
@@ -88,15 +88,16 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                       fontWeight: FontWeight.w600),
                   tabs: const [
                     Tab(
-                      text: 'Draft Orders',
+                      text: 'All Orders',
                     ),
                     Tab(
-                      text: 'All Orders',
+                      text: 'Draft Orders',
                     ),
                   ],
                 ),
                 SizedBox(height: 20.h),
-              ],
+
+               ],
             ),
           ),
         ),
