@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
@@ -15,14 +16,14 @@ class VerifyEmailScreen extends StatelessWidget {
 
   VerifyEmailScreen({super.key});
 
-  String optValue='';
+  String optValue = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Verify Email",
+          translate("Verify Email"),
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
@@ -43,34 +44,31 @@ class VerifyEmailScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 200.h, bottom: 60.h),
                   child: Text(
-                    'Please add OTP sent to your email for verification',
+                    translate('Please add OTP sent to your email for verification'),
                     style:
                         TextStyle(fontWeight: FontWeight.w400, fontSize: 15.sp),
                   ),
                 ),
                 OTPTextField(
-                  onChanged: (val){
-                   optValue=val;
+                  onChanged: (val) {
+                    optValue = val;
                   },
-                    otpFieldStyle: OtpFieldStyle(
-                      borderColor: ColorsManager.primary,
-                      backgroundColor: ColorsManager.primary.withOpacity(0.2),
-                      focusBorderColor: Colors.green,
-                      disabledBorderColor: Colors.grey,
-
-                    ),
-
-                    controller: otpController,
-                    length: 6,
-                    width: context.width,
-                    textFieldAlignment: MainAxisAlignment.spaceAround,
-                    fieldWidth: 45.w,
-                    fieldStyle: FieldStyle.box,
-                    outlineBorderRadius: 15.r,
-                    style: TextStyle(fontSize: 17.sp),
-                    keyboardType: TextInputType.phone,
+                  otpFieldStyle: OtpFieldStyle(
+                    borderColor: ColorsManager.primary,
+                    backgroundColor: ColorsManager.primary.withOpacity(0.2),
+                    focusBorderColor: Colors.green,
+                    disabledBorderColor: Colors.grey,
+                  ),
+                  controller: otpController,
+                  length: 6,
+                  width: context.width,
+                  textFieldAlignment: MainAxisAlignment.spaceAround,
+                  fieldWidth: 45.w,
+                  fieldStyle: FieldStyle.box,
+                  outlineBorderRadius: 15.r,
+                  style: TextStyle(fontSize: 17.sp),
+                  keyboardType: TextInputType.phone,
                 ),
-
                 SizedBox(
                   height: 20.sp,
                 ),
@@ -78,20 +76,20 @@ class VerifyEmailScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Didnt receive OTP ?',
+                      translate('Didnt receive OTP ?'),
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
                         color: ColorsManager.black,
                       ),
                     ),
-                      SizedBox(
+                    SizedBox(
                       width: 13.w,
                     ),
                     InkWell(
                       onTap: () {},
                       child: Text(
-                        'Try again',
+                        translate('Try again'),
                         style: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
@@ -109,9 +107,9 @@ class VerifyEmailScreen extends StatelessWidget {
                   ),
                   child: CustomButton(
                     onTap: () {
-                      if(optValue.length==6 ) {
+                      if (optValue.length == 6) {
                         NavigationManager.navigateReplacementToPage(
-                          context: context, routeName: 'homeScreen');
+                            context: context, routeName: 'homeScreen');
                       }
                     },
                     buttonText: 'Continue',

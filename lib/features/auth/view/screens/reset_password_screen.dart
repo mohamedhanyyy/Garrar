@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
@@ -17,7 +18,7 @@ class ResetPasswordScreen extends StatelessWidget {
         leading: SizedBox(
             width: 18, height: 12, child: BackButtonWidget(context: context)),
         title: Text(
-          "Reset Password",
+          translate("Reset Password"),
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
@@ -38,14 +39,14 @@ class ResetPasswordScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 200.h, bottom: 60.h),
                   child: Text(
-                    'Please open link sent to your email for reset password',
+                    translate('Please open link sent to your email for reset password'),
                     style:
                         TextStyle(fontWeight: FontWeight.w400, fontSize: 15.sp),
                   ),
                 ),
                 TextFormField(
                   decoration: customInputDecoration(
-                    hint: 'Enter email',
+                    hintText: 'Enter email',
                     prefixIcon: IconsManager.mailCard,
                   ),
                 ),

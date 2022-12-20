@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
 import 'package:garrar/features/domestic_order/cubit/domestic_order_cubit.dart';
@@ -23,7 +24,7 @@ class FinishDomesticOrder extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Location Info',
+          translate('Location Info'),
           style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),
         ),
         Padding(
@@ -43,7 +44,7 @@ class FinishDomesticOrder extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Pickup Location",
+                    Text(translate("Pickup Location"),
                         style: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
@@ -59,11 +60,14 @@ class FinishDomesticOrder extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Drop-off Location",
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff616161))),
+                    Text(
+                      translate("Drop-off Location"),
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xff616161),
+                      ),
+                    ),
                     Text(
                       domesticOrderCubit.dropOffLocation,
                       style: TextStyle(
@@ -75,11 +79,14 @@ class FinishDomesticOrder extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Arrival Time",
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff616161))),
+                    Text(
+                      translate("Arrival Time"),
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xff616161),
+                      ),
+                    ),
                     Text(
                       domesticOrderCubit.arrivalTime,
                       style: TextStyle(
@@ -93,7 +100,7 @@ class FinishDomesticOrder extends StatelessWidget {
           ),
         ),
         Text(
-          'Extra Notes',
+          translate('Extra Notes'),
           style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp),
         ),
         Padding(
@@ -103,7 +110,8 @@ class FinishDomesticOrder extends StatelessWidget {
               extraNotes = val;
             },
             maxLines: 3,
-            decoration: customInputDecoration(hint: 'Add notes if exists'),
+            decoration: customInputDecoration(
+                hintText: translate('Add notes if exists')),
           ),
         ),
         CustomButton(

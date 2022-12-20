@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 
-
-
 Container buildOrderWidget({
   required String image,
   required String text,
@@ -26,8 +24,8 @@ Container buildOrderWidget({
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(      mainAxisSize: MainAxisSize.min,
-
+        Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
               image,
@@ -37,8 +35,8 @@ Container buildOrderWidget({
             SizedBox(
               width: 15.w,
             ),
-            Column(      mainAxisSize: MainAxisSize.min,
-
+            Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   text,
@@ -79,8 +77,8 @@ Container buildOrderWidget({
         SizedBox(
           height: 10.h,
         ),
-        Row(      mainAxisSize: MainAxisSize.min,
-
+        Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               date,

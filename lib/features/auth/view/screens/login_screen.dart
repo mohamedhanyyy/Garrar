@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
@@ -52,10 +53,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 30.h, bottom: 30.h),
-                    child: const Text(
-                      'Lets you in',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 40),
+                    child: Text(
+                      translate("Let's go"),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 40),
                     ),
                   ),
                   TextFormField(
@@ -63,20 +64,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       email = val!;
                     },
                     decoration: customInputDecoration(
-                      hint: 'Email',
+                      hintText: translate('Email'),
                       prefixIcon: IconsManager.mailCard,
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
-                        return 'Empty email';
+                        return translate('Empty email');
                       }
                       return null;
                     },
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      top: 25,
-                      bottom: 17,
+                    padding: EdgeInsets.only(
+                      top: 25.h,
+                      bottom: 17.h,
                     ),
                     child: TextFormField(
                       onSaved: (val) {
@@ -84,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       obscureText: isVisible,
                       decoration: InputDecoration(
+                          hintStyle: const TextStyle(color: Color(0xffC0C0C0)),
                           border: customOutlineInputBorder,
                           enabledBorder: customOutlineInputBorder,
                           focusedErrorBorder: customOutlineInputBorder,
@@ -92,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           disabledBorder: customOutlineInputBorder,
                           filled: true,
                           fillColor: ColorsManager.gray,
-                          hintText: 'Password',
+                          hintText: translate('Password'),
                           prefixIcon: const Icon(Icons.lock),
                           suffixIcon: IconButton(
                             onPressed: () {
@@ -108,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           )),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return 'Empty password';
+                          return translate('Empty password');
                         }
                         return null;
                       },
@@ -125,16 +127,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               checkBox = val!;
                             });
                           }),
-                      const SizedBox(
-                        width: 10,
+                      SizedBox(
+                        width: 10.w,
                       ),
-                      const Text("Remember me"),
+                      Text(translate("Remember me")),
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20,
-                      bottom: 38,
+                    padding: EdgeInsets.only(
+                      top: 20.h,
+                      bottom: 38.h,
                     ),
                     child: CustomButton(
                       onTap: () {
@@ -153,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                         }
                       },
-                      buttonText: 'Sign in',
+                      buttonText: translate('Sign in'),
                     ),
                   ),
                   Row(
@@ -165,34 +167,34 @@ class _LoginScreenState extends State<LoginScreen> {
                               context: context,
                               routeName: 'resetPasswordScreen');
                         },
-                        child: const Text(
-                          'Forget Password',
+                        child: Text(
+                          translate('Forget Password'),
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             color: ColorsManager.primary,
                           ),
                         ),
                       ),
                       Row(
                         children: [
-                          const Text(
-                            'Dont have an account?',
+                          Text(
+                            translate('Dont have an account?'),
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 12.sp,
                             ),
                           ),
-                          const SizedBox(
-                            width: 5,
+                          SizedBox(
+                            width: 5.w,
                           ),
                           InkWell(
                             onTap: () {
                               NavigationManager.navigateToPage(
                                   context: context, routeName: 'signupScreen');
                             },
-                            child: const Text(
-                              'Sign up',
+                            child: Text(
+                              translate('Sign up'),
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: ColorsManager.primary,
                               ),
                             ),

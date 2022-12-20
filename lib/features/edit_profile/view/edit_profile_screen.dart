@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/back_button.dart';
@@ -27,7 +28,7 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:   BackButtonWidget(context: context),
+        leading: BackButtonWidget(context: context),
       ),
       body: SizedBox(
         width: context.width,
@@ -43,10 +44,10 @@ class EditProfileScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 85.h, bottom: 30.h),
-                    child: const Text(
-                      'Edit Profile',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 40),
+                    child: Text(
+                      translate('Edit Profile'),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 40),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -55,7 +56,7 @@ class EditProfileScreen extends StatelessWidget {
                       name = val!;
                     },
                     decoration: customInputDecoration(
-                      hint: 'Edit name',
+                      hintText: 'Edit name',
                       prefixIcon: IconsManager.person,
                     ),
                     validator: (val) {
@@ -75,12 +76,12 @@ class EditProfileScreen extends StatelessWidget {
                         companyName = val!;
                       },
                       decoration: customInputDecoration(
-                        hint: 'Edit Company name',
+                        hintText: 'Edit Company name',
                         prefixIcon: IconsManager.building,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return 'Empty company name';
+                          return translate('Empty company name');
                         }
                         return null;
                       },
@@ -95,20 +96,24 @@ class EditProfileScreen extends StatelessWidget {
                         email = val!;
                       },
                       decoration: customInputDecoration(
-                        hint: 'Edit email',
+                        hintText: 'Edit email',
                         prefixIcon: IconsManager.mailCard,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return 'Empty email';
+                          return translate('Empty email');
                         }
                         return null;
                       },
                     ),
                   ),
                   IntlPhoneField(
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Edit Phone Number',
+                      labelStyle: TextStyle(
+                        color: ColorsManager.gray,
+                      ),
                       fillColor: ColorsManager.gray,
                       filled: true,
                       border: customOutlineInputBorder,
@@ -118,7 +123,7 @@ class EditProfileScreen extends StatelessWidget {
                     },
                     validator: (val) {
                       if (val!.number.isEmpty) {
-                        return 'Empty number';
+                        return translate('Empty number');
                       }
                       return null;
                     },
@@ -132,16 +137,16 @@ class EditProfileScreen extends StatelessWidget {
                       Expanded(
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              minimumSize: const Size.fromHeight(50), // NEW
+                              minimumSize: Size.fromHeight(50.h), // NEW
 
                               backgroundColor: ColorsManager.primary,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25),
+                                borderRadius: BorderRadius.circular(25.r),
                               )),
                           onPressed: () {
                             // todo edit here
                           },
-                          child: const Text("Edit"),
+                          child: Text(translate("Edit")),
                         ),
                       ),
                       const SizedBox(
@@ -150,17 +155,19 @@ class EditProfileScreen extends StatelessWidget {
                       Expanded(
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              minimumSize: const Size.fromHeight(50), // NEW
-                              backgroundColor: ColorsManager.primary,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25),
-                              )),
+                            minimumSize: Size.fromHeight(50.h), // NEW
+                            backgroundColor: ColorsManager.primary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.r),
+                            ),
+                          ),
                           onPressed: () {
                             NavigationManager.navigateToPage(
                                 context: context,
                                 routeName: "changePasswordScreen");
                           },
-                          child: const Text("Change Password",textAlign: TextAlign.center),
+                          child: Text(translate("Change Password"),
+                              textAlign: TextAlign.center),
                         ),
                       ),
                     ],

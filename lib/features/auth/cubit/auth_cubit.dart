@@ -7,13 +7,16 @@ import 'package:garrar/features/auth/cubit/auth_state.dart';
 class AuthCubit extends Cubit<LoginState> {
   AuthCubit() : super(LoginInitial());
 
-  void login({required String email, required String password,    required BuildContext context,
+  void login({
+    required String email,
+    required String password,
+    required BuildContext context,
   }) {
     //todo here
     PreferencesHelper.saveToken(token: 'token');
 
-    NavigationManager.navigateReplacementToPage(context: context, routeName: 'verifyEmailScreen');
-
+    NavigationManager.navigateReplacementToPage(
+        context: context, routeName: 'verifyEmailScreen');
   }
 
   void signup({
@@ -24,14 +27,10 @@ class AuthCubit extends Cubit<LoginState> {
     required String phoneNumber,
     required BuildContext context,
   }) {
-
-
-
     PreferencesHelper.saveToken(token: 'token');
     //todo here
-    NavigationManager.navigateReplacementToPage(context: context, routeName: 'verifyEmailScreen');
-
-
+    NavigationManager.navigateReplacementToPage(
+        context: context, routeName: 'verifyEmailScreen');
   }
 
   void resetEmail({required String email}) {

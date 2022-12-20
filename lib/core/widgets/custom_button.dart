@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/utils/colors.dart';
 
 class CustomButton extends StatelessWidget {
@@ -29,14 +31,14 @@ class CustomButton extends StatelessWidget {
         onTap();
       },
       style: ElevatedButton.styleFrom(
-        minimumSize: Size.fromHeight(50.h), // NEW
+        minimumSize: Size.fromHeight(50.h),
         backgroundColor: color ?? ColorsManager.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 25.r),
         ),
       ),
       child: Text(
-        buttonText,
+        translate(buttonText),
         style: TextStyle(
           color: fontColor ?? Colors.white,
           fontSize: fontSize ?? 14,

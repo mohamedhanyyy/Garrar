@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/widgets/back_button.dart';
 import 'package:garrar/features/domestic_order/view/finish_domestic_order.dart';
@@ -22,7 +23,7 @@ class _DomesticOrderScreenState extends State<DomesticOrderScreen> {
       appBar: AppBar(
         leading: activeStep == 0 ? BackButtonWidget(context: context) : null,
         title: Text(
-          'Make Domestic Order',
+          translate('Make Domestic Order'),
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20.sp,

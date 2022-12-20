@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/features/profile/view/profile_screen.dart';
 
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? ColorsManager.primary
                   : ColorsManager.black.withOpacity(0.5),
             ),
-            label: 'My orders',
+            label: translate('My orders'),
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -51,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? ColorsManager.primary
                   : ColorsManager.black.withOpacity(0.5),
             ),
-            label: 'Profile',
+            label: translate('Profile'),
           ),
         ],
       ),

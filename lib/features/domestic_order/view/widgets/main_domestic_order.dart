@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/features/domestic_order/cubit/domestic_order_cubit.dart';
 import 'package:garrar/injector.dart';
@@ -35,7 +36,7 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Pickup Location',
+          translate('Pickup Location'),
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
         ),
         Padding(
@@ -48,8 +49,7 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
             child: DropdownButtonFormField(
                 focusColor: Colors.transparent,
                 isExpanded: true,
-                hint: const Text('Choose Pick up location'),
-                disabledHint: const Text('Containers type'),
+
                 decoration: customDropdownDecoration(image: IconsManager.place),
                 borderRadius: BorderRadius.circular(15),
                 items: domesticOrderCubit.locations.map((e) {
@@ -65,7 +65,7 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
                 }),
           ),
         ),
-        Text('Drop-off Location',
+        Text(translate('Drop-off Location'),
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
         Padding(
           padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -76,8 +76,6 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
                 border: Border.all(color: Colors.black)),
             child: DropdownButtonFormField(
                 isExpanded: true,
-                hint: const Text('Choose Drop off location'),
-                disabledHint: const Text('Containers type'),
                 decoration: customDropdownDecoration(image: IconsManager.place),
                 borderRadius: BorderRadius.circular(15),
                 items: domesticOrderCubit.locations.map((e) {
@@ -93,7 +91,7 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
                 }),
           ),
         ),
-        Text('Arrival Time',
+        Text(translate('Arrival Time'),
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
         Padding(
           padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -104,8 +102,6 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
                 border: Border.all(color: Colors.black)),
             child: DropdownButtonFormField(
                 isExpanded: true,
-                hint: const Text('Choose Drop-Off location'),
-                disabledHint: const Text('Drop-Off'),
                 decoration: customDropdownDecoration(image: IconsManager.place),
                 borderRadius: BorderRadius.circular(15),
                 items: domesticOrderCubit.locations.map((e) {
@@ -134,7 +130,6 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
           buttonText: 'Continue',
         ),
         SizedBox(height: 20.h),
-
       ],
     );
   }

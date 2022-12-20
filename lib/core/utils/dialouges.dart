@@ -189,7 +189,6 @@ class Dialogues {
     final shouldPop = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-
         title: const Text("هل تريد اغلاق التطبيق ؟"),
         titleTextStyle: const TextStyle(fontSize: 17, color: Colors.black),
         actions: <Widget>[
@@ -226,8 +225,6 @@ class Dialogues {
     Navigator.pop(context);
   }
 
-
-
   cameraDialog({
     required BuildContext context,
     required Function onCameraTap,
@@ -242,33 +239,31 @@ class Dialogues {
       animType: AnimType.scale,
       dialogType: DialogType.info,
       desc: 'Select image source',
-
       descTextStyle: const TextStyle(fontSize: 14),
       titleTextStyle: const TextStyle(fontSize: 17),
       title: "Pick Image",
       btnCancel: CustomButton(
-        onTap: (){
+        onTap: () {
           Navigator.of(context).pop();
           onCameraTap();
-        }, buttonText: 'Camera',
+        },
+        buttonText: 'Camera',
       ),
       btnOk: CustomButton(
-        onTap: (){
+        onTap: () {
           Navigator.of(context).pop();
           onGalleryTap();
-        }, buttonText: 'Gallery',
+        },
+        buttonText: 'Gallery',
       ),
     ).show();
   }
-
-
 }
 
-void showFillDataDialog({required BuildContext context}){
+void showFillDataDialog({required BuildContext context}) {
   Dialogues().alertDialog(
       context: context,
       title: 'Warning',
-
       desc: 'Please fill all data',
       dialogType: DialogType.warning,
       buttonName: 'Ok',

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
@@ -44,7 +45,7 @@ class _FirstStepState extends State<FirstStep> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Shipping number',
+              translate('Shipping number'),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
             ),
             Padding(
@@ -52,7 +53,7 @@ class _FirstStepState extends State<FirstStep> {
               child: TextFormField(
                 validator: (val) {
                   if (val!.isEmpty) {
-                    return 'Empty booking number';
+                    return translate('Empty booking number');
                   }
                   return null;
                 },
@@ -63,11 +64,11 @@ class _FirstStepState extends State<FirstStep> {
                   marineOrderCubit.bookingNumber = val!;
                 },
                 decoration: customInputDecoration(
-                    hint: 'Enter booking number (BK)',
+                    hintText: 'Enter booking number (BK)',
                     prefixIcon: IconsManager.fingerPrint),
               ),
             ),
-            Text('Booking file',
+            Text(translate('Booking file'),
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             marineOrderCubit.bookingFirstFile == null
                 ? Padding(
@@ -98,40 +99,41 @@ class _FirstStepState extends State<FirstStep> {
                       child: TextFormField(
                         enabled: false,
                         decoration: customInputDecoration(
-                            hint: 'Enter booking file',
-                            suffixIcon: IconsManager.upload,
-                            prefixIcon: IconsManager.document,
-                         ),
+                          hintText: 'Enter booking file',
+                          suffixIcon: IconsManager.upload,
+                          prefixIcon: IconsManager.document,
+                        ),
                       ),
                     ),
                   )
                 : Padding(
                     padding: EdgeInsets.symmetric(vertical: 15.h),
-                    child: Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.file(
-                            File(marineOrderCubit.bookingFirstFile!.path),
-                            height: 120.h,
-                            width: 120.w,
-                            fit: BoxFit.fill,
+                    child: Card(
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.file(
+                              File(marineOrderCubit.bookingFirstFile!.path),
+                              height: 120.h,
+                              width: 120.w,
+                              fit: BoxFit.fill,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                            onPressed: () {
-                              marineOrderCubit.bookingFirstFile = null;
-                              setState(() {});
-                            },
-                            icon: const Icon(
-                              Icons.clear,
-                              color: Colors.red,
-                            ))
-                      ],
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          InkWell(
+                              onTap: () {
+                                marineOrderCubit.bookingFirstFile = null;
+                                setState(() {});
+                              },
+                              child: Text(translate('Clear')))
+                        ],
+                      ),
                     ),
                   ),
-            Text('Containers type',
+            Text(translate('Containers type'),
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             Padding(
               padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -144,8 +146,6 @@ class _FirstStepState extends State<FirstStep> {
                     decoration:
                         customDropdownDecoration(image: IconsManager.place),
                     isExpanded: true,
-                    hint: const Text('Containers type'),
-                    disabledHint: const Text('Containers type'),
                     borderRadius: BorderRadius.circular(15),
                     items: ['Import', 'Export', 'Other'].map((e) {
                       return DropdownMenuItem(value: e, child: Text(e));
@@ -161,7 +161,7 @@ class _FirstStepState extends State<FirstStep> {
               ),
             ),
             Text(
-              'Containers Count',
+              translate('Containers Count'),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
             ),
             Padding(
@@ -173,7 +173,7 @@ class _FirstStepState extends State<FirstStep> {
                 },
                 validator: (val) {
                   if (val!.isEmpty) {
-                    return 'Empty Container Count';
+                    return translate('Empty Container Count');
                   }
                   return null;
                 },
@@ -181,11 +181,11 @@ class _FirstStepState extends State<FirstStep> {
                   marineOrderCubit.containerNumber = int.parse(val!);
                 },
                 decoration: customInputDecoration(
-                  hint: 'Container Count',
+                  hintText: translate('Container Count'),
                 ),
               ),
             ),
-            Text('Shipping line',
+            Text(translate('Shipping line'),
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             Padding(
               padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -196,8 +196,6 @@ class _FirstStepState extends State<FirstStep> {
                     border: Border.all(color: Colors.black)),
                 child: DropdownButtonFormField(
                     isExpanded: true,
-                    hint: const Text('Shipping line'),
-                    disabledHint: const Text('Choose Shipping line'),
                     decoration:
                         customDropdownDecoration(image: IconsManager.place),
                     borderRadius: BorderRadius.circular(15),
@@ -238,7 +236,6 @@ class _FirstStepState extends State<FirstStep> {
               buttonText: 'Continue',
             ),
             SizedBox(height: 20.h),
-
           ],
         ),
       ),

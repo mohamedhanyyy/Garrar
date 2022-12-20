@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
@@ -22,10 +23,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:
-             SizedBox(width: 18, height: 12, child: BackButtonWidget(context: context)),
+        leading: SizedBox(
+          width: 18.w,
+          height: 12.h,
+          child: BackButtonWidget(context: context),
+        ),
         title: Text(
-          "Change Password",
+          translate("Change Password"),
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
@@ -46,7 +50,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 Padding(
                   padding: EdgeInsets.only(top: 200.h, bottom: 60.h),
                   child: Text(
-                    'Please set current and new password',
+                    translate('Please set current and new password'),
                     style:
                         TextStyle(fontWeight: FontWeight.w400, fontSize: 15.sp),
                   ),
@@ -54,7 +58,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 TextFormField(
                   obscureText: visibility1,
                   decoration: InputDecoration(
-                    hintText: 'Current password',
+                    hintText: translate('Current password'),
                     filled: true,
                     fillColor: ColorsManager.gray,
                     border: customOutlineInputBorder,
@@ -73,14 +77,14 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    top: 25,
-                    bottom: 17,
+                  padding: EdgeInsets.only(
+                    top: 25.h,
+                    bottom: 17.h,
                   ),
                   child: TextFormField(
                     obscureText: visibility2,
                     decoration: InputDecoration(
-                      hintText: 'New password',
+                        hintText: translate('New password'),
                       filled: true,
                       fillColor: ColorsManager.gray,
                       border: customOutlineInputBorder,
@@ -100,13 +104,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                    bottom: 38,
+                  padding: EdgeInsets.only(
+                    top: 20.h,
+                    bottom: 38.h,
                   ),
                   child: CustomButton(
                     onTap: () {},
-                    buttonText: 'Change password',
+                    buttonText: translate('Change password'),
                   ),
                 ),
               ],

@@ -15,12 +15,12 @@ class PreferencesHelper {
     return preferences?.getString("token") ?? '';
   }
 
-  static Future<void> saveTheme({required bool isWhite}) async {
-    await preferences?.setBool("theme", isWhite);
+  static Future<void> saveLang({required bool english}) async {
+    await preferences?.setBool("lang", english);
   }
 
-  static bool? getTheme() {
-    return preferences?.getBool("theme");
+  static bool? getLang() {
+    return preferences?.getBool("lang");
   }
 
   static void clearPreferences() {

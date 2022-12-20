@@ -15,13 +15,21 @@ import 'core/config/routes.dart';
 import 'core/config/themes.dart';
 import 'core/helpers/dio_helper.dart';
 import 'injector.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
   PreferencesHelper.init();
   DioHelper.init();
-  runApp(const MyApp());
+  var delegate = await LocalizationDelegate.create(
+    fallbackLocale: 'en_US',
+    basePath: 'assets/locales',
+    supportedLocales: ['en_US', 'es', 'fa', 'ar', 'ru'],
+  );
+
+  runApp(LocalizedApp(delegate, const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,6 +37,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var localizationDelegate = LocalizedApp.of(context).delegate;
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
@@ -36,8 +46,6 @@ class MyApp extends StatelessWidget {
 
     return ScreenUtilInit(
       designSize: const Size(360, 800),
-      minTextAdapt: true,
-      splitScreenMode: true,
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
@@ -48,7 +56,7 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => MarineOrderCubit(),
             ),
             BlocProvider(
-              create: (BuildContext context) => ProfileCubit(),
+              create: (context) => ProfileCubit(),
             ),
             BlocProvider(
               create: (BuildContext context) => EditProfileCubit(),
@@ -66,12 +74,26 @@ class MyApp extends StatelessWidget {
               onTap: () {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: appTheme(),
-                title: 'Garrar',
-                initialRoute: Routes.initialRoute,
-                onGenerateRoute: AppRoutes.onGenerateRoute,
+              child: LocalizationProvider(
+                state: LocalizationProvider.of(context).state,
+                child: MaterialApp(
+                  localizationsDelegates: [
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    localizationDelegate
+                  ],
+                  supportedLocales: localizationDelegate.supportedLocales,
+                  locale: PreferencesHelper.getLang() != true
+                      ? const Locale("ar")
+                      : const Locale('en_US'),
+                  debugShowCheckedModeBanner: false,
+                  theme: appTheme(),
+                  darkTheme: ThemeData.dark(),
+                  themeMode: ThemeMode.light,
+                  title: 'Garrar',
+                  initialRoute: Routes.initialRoute,
+                  onGenerateRoute: AppRoutes.onGenerateRoute,
+                ),
               ),
             ),
           ),

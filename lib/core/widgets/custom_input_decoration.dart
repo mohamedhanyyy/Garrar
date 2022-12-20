@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 InputDecoration customInputDecoration({
-  String? hint,
+  String? hintText,
   String? suffixIcon,
   String? prefixIcon,
   Color? hintColor,
+  bool? enabled,
 }) {
   return InputDecoration(
-    hintText: hint,
-
+    hintText: translate(hintText!),
     hintStyle: TextStyle(
-      color: hintColor ?? Colors.black,
+      color: hintColor ?? const Color(0xffC0C0C0),
     ),
+    enabled: enabled ?? true,
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(9),
     ),
@@ -87,7 +89,7 @@ InputDecoration customDropdownDecoration({required String image}) {
     prefixIcon: Padding(
       padding: const EdgeInsets.only(left: 8, right: 8),
       child: SizedBox(
-        height: 15,
+        height: 15.h,
         child: SvgPicture.asset(image),
       ),
     ),

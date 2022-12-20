@@ -62,7 +62,7 @@ class _SecondStepState extends State<SecondStep> {
                   marineOrderCubit.shippingType = val!;
                 },
                 decoration: customInputDecoration(
-                    hint: 'Enter booking number (BK)',
+                    hintText: 'Enter booking number (BK)',
                     prefixIcon: IconsManager.swap),
               ),
             ),
@@ -84,7 +84,7 @@ class _SecondStepState extends State<SecondStep> {
                   marineOrderCubit.customType = val!;
                 },
                 decoration: customInputDecoration(
-                  hint: 'Choose custom type',
+                  hintText: 'Choose custom type',
                   prefixIcon: IconsManager.worldLock,
                 ),
               ),
@@ -111,7 +111,7 @@ class _SecondStepState extends State<SecondStep> {
                 },
                 decoration: customInputDecoration(
                     prefixIcon: IconsManager.date,
-                    hint: formattedDate ?? 'Set destination arrival time'),
+                    hintText: formattedDate ?? 'Set destination arrival time'),
               ),
             ),
             CustomButton(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
@@ -50,10 +51,10 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 85.h, bottom: 30.h),
-                    child: const Text(
-                      'Create Your Account',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 40),
+                    child: Text(
+                      translate('Create Your Account'),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 40),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -62,12 +63,12 @@ class _SignupScreenState extends State<SignupScreen> {
                       name = val!;
                     },
                     decoration: customInputDecoration(
-                      hint: 'Full name',
+                      hintText: translate('Full name'),
                       prefixIcon: IconsManager.person,
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
-                        return 'Empty name';
+                        return translate('Empty name');
                       }
                       return null;
                     },
@@ -82,12 +83,12 @@ class _SignupScreenState extends State<SignupScreen> {
                         companyName = val!;
                       },
                       decoration: customInputDecoration(
-                        hint: 'Company name',
+                        hintText: translate('Company name'),
                         prefixIcon: IconsManager.building,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return 'Empty company name';
+                          return translate('Empty company name');
                         }
                         return null;
                       },
@@ -95,17 +96,20 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   IntlPhoneField(
                     decoration: InputDecoration(
-                      labelText: 'Phone Number',
+                      labelText: translate('Phone Number'),
                       fillColor: ColorsManager.gray,
                       filled: true,
+                      hintStyle: const TextStyle(
+                        color: ColorsManager.gray
+                      ),
                       border: customOutlineInputBorder,
                     ),
                     onSaved: (phone) {
-                      phoneNumber = phone!.number  ;
+                      phoneNumber = phone!.number;
                     },
                     validator: (val) {
                       if (val!.number.isEmpty) {
-                        return 'Empty number';
+                        return translate('Empty number');
                       }
                       return null;
                     },
@@ -119,12 +123,12 @@ class _SignupScreenState extends State<SignupScreen> {
                         email = val!;
                       },
                       decoration: customInputDecoration(
-                        hint: 'Email',
+                        hintText: translate('Email'),
                         prefixIcon: IconsManager.mailCard,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return 'Empty email';
+                          return translate('Empty email');
                         }
                         return null;
                       },
@@ -145,8 +149,12 @@ class _SignupScreenState extends State<SignupScreen> {
                         disabledBorder: customOutlineInputBorder,
                         errorBorder: customOutlineInputBorder,
                         filled: true,
+
                         fillColor: ColorsManager.gray,
-                        hintText: 'Password',
+                        hintText: translate('Password'),
+                        hintStyle: const TextStyle(
+                          color: Colors.grey
+                        ),
                         prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -161,10 +169,10 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return 'Empty password';
+                          return translate('Empty password');
                         }
                         if (val.length < 6) {
-                          return 'Password at least 6 characters';
+                          return translate('Password at least 6 characters');
                         }
                         return null;
                       },
@@ -196,9 +204,9 @@ class _SignupScreenState extends State<SignupScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Already have an account ?',
-                        style: TextStyle(
+                      Text(
+                        translate('Already have an account ?'),
+                        style: const TextStyle(
                           fontSize: 12,
                           color: ColorsManager.primary,
                         ),
@@ -208,9 +216,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           NavigationManager.navigateToPage(
                               context: context, routeName: 'loginScreen');
                         },
-                        child: const Text(
-                          'Log in',
-                          style: TextStyle(
+                        child: Text(
+                          translate('Login'),
+                          style: const TextStyle(
                             fontSize: 12,
                             color: ColorsManager.primary,
                             decoration: TextDecoration.underline,

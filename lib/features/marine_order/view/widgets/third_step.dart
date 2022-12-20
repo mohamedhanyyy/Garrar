@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 import '../../../../core/utils/dialouges.dart';
 import '../../../../core/utils/icons.dart';
@@ -41,7 +42,7 @@ class _ThirdStepState extends State<ThirdStep> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Get-Out Location',
+            translate('Get-Out Location'),
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
           ),
           Padding(
@@ -53,8 +54,8 @@ class _ThirdStepState extends State<ThirdStep> {
                   border: Border.all(color: Colors.black)),
               child: DropdownButtonFormField(
                   isExpanded: true,
-                  hint: const Text('Choose Destination Location'),
-                  disabledHint: const Text('Choose Destination Location'),
+                  hint:   Text(translate('Choose Destination Location')),
+                  disabledHint:   Text(translate('Choose Destination Location')),
                   decoration:
                       customDropdownDecoration(image: IconsManager.place),
                   borderRadius: BorderRadius.circular(15),
@@ -71,7 +72,7 @@ class _ThirdStepState extends State<ThirdStep> {
                   }),
             ),
           ),
-          Text('Destination location',
+          Text(translate('Destination location'),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
           Padding(
             padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -98,7 +99,7 @@ class _ThirdStepState extends State<ThirdStep> {
                   }),
             ),
           ),
-          Text('Dry Port location',
+          Text(translate('Dry Port location'),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
           Padding(
             padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -125,7 +126,7 @@ class _ThirdStepState extends State<ThirdStep> {
                   }),
             ),
           ),
-          Text('Get-In location',
+          Text(translate('Get-In location'),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
           Padding(
             padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -164,8 +165,8 @@ class _ThirdStepState extends State<ThirdStep> {
               }
             },
             buttonText: 'Continue',
-          ),            SizedBox(height: 20.h),
-
+          ),
+          SizedBox(height: 20.h),
         ],
       ),
     );

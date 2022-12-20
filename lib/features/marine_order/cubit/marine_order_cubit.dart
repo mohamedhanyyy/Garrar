@@ -7,7 +7,6 @@ class MarineOrderCubit extends Cubit<MarineOrderState> {
 
   //common step variables
 
-
   List<String> data = [
     'cairo',
     'giza',
