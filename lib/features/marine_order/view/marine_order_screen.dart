@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:garrar/core/utils/colors.dart';
+ import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/widgets/back_button.dart';
 import 'package:garrar/features/marine_order/view/widgets/first_step.dart';
 import 'package:garrar/features/marine_order/view/widgets/fourth_step.dart';
@@ -25,7 +26,7 @@ class _MarineOrderScreenState extends State<MarineOrderScreen> {
         automaticallyImplyLeading: activeStep == 0 ? true : false,
         leading: activeStep == 0 ? BackButtonWidget(context: context) : null,
         title: Text(
-          'Make Marine Order',
+          ('Make Marine Order'.tr()),
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20.sp,

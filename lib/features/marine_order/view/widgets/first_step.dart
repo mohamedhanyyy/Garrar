@@ -1,10 +1,10 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
-import 'package:garrar/core/utils/icons.dart';
+ import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
 import 'package:garrar/features/marine_order/cubit/marine_order_cubit.dart';
@@ -45,7 +45,7 @@ class _FirstStepState extends State<FirstStep> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              translate('Shipping number'),
+              ('Shipping number'.tr()),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
             ),
             Padding(
@@ -53,7 +53,7 @@ class _FirstStepState extends State<FirstStep> {
               child: TextFormField(
                 validator: (val) {
                   if (val!.isEmpty) {
-                    return translate('Empty booking number');
+                    return ('Empty booking number'.tr());
                   }
                   return null;
                 },
@@ -68,7 +68,7 @@ class _FirstStepState extends State<FirstStep> {
                     prefixIcon: IconsManager.fingerPrint),
               ),
             ),
-            Text(translate('Booking file'),
+            Text(('Booking file'.tr()),
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             marineOrderCubit.bookingFirstFile == null
                 ? Padding(
@@ -99,7 +99,7 @@ class _FirstStepState extends State<FirstStep> {
                       child: TextFormField(
                         enabled: false,
                         decoration: customInputDecoration(
-                          hintText: 'Enter booking file',
+                          hintText: 'Enter booking file'.tr(),
                           suffixIcon: IconsManager.upload,
                           prefixIcon: IconsManager.document,
                         ),
@@ -110,6 +110,7 @@ class _FirstStepState extends State<FirstStep> {
                     padding: EdgeInsets.symmetric(vertical: 15.h),
                     child: Card(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(15),
@@ -121,19 +122,23 @@ class _FirstStepState extends State<FirstStep> {
                             ),
                           ),
                           const SizedBox(
-                            height: 20,
+                            height: 5,
                           ),
                           InkWell(
                               onTap: () {
                                 marineOrderCubit.bookingFirstFile = null;
                                 setState(() {});
                               },
-                              child: Text(translate('Clear')))
+                              child: Text(('Clear'.tr()),style: TextStyle(
+                                fontSize: 15.sp,
+                                color: Colors.red,
+                                fontWeight: FontWeight.w500,
+                              ),))
                         ],
                       ),
                     ),
                   ),
-            Text(translate('Containers type'),
+            Text(('Containers type'.tr()),
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             Padding(
               padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -161,7 +166,7 @@ class _FirstStepState extends State<FirstStep> {
               ),
             ),
             Text(
-              translate('Containers Count'),
+              ('Containers Count'.tr()),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
             ),
             Padding(
@@ -173,7 +178,7 @@ class _FirstStepState extends State<FirstStep> {
                 },
                 validator: (val) {
                   if (val!.isEmpty) {
-                    return translate('Empty Container Count');
+                    return ('Empty Container Count'.tr());
                   }
                   return null;
                 },
@@ -181,11 +186,11 @@ class _FirstStepState extends State<FirstStep> {
                   marineOrderCubit.containerNumber = int.parse(val!);
                 },
                 decoration: customInputDecoration(
-                  hintText: translate('Container Count'),
+                  hintText: ('Containers Count'),
                 ),
               ),
             ),
-            Text(translate('Shipping line'),
+            Text(('Shipping line'.tr()),
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             Padding(
               padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -225,7 +230,7 @@ class _FirstStepState extends State<FirstStep> {
                         marineOrderCubit.containerType != '' &&
                         marineOrderCubit.shippingLine != '' &&
                         marineOrderCubit.bookingNumber != ''
-                    //&& marineOrderCubit.bookingFirstFile != null
+                    && marineOrderCubit.bookingFirstFile != null
                     ) {
                   formKey.currentState!.save();
                   widget.onTap();

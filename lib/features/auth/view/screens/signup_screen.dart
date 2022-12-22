@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-
 import '../../../../core/utils/icons.dart';
 import '../../cubit/auth_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -50,9 +50,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 85.h, bottom: 30.h),
+                    padding: EdgeInsets.only(top: 70.h, bottom: 15.h),
                     child: Text(
-                      translate('Create Your Account'),
+                      ('Create Your Account'.tr()),
                       style: const TextStyle(
                           fontWeight: FontWeight.w600, fontSize: 40),
                       textAlign: TextAlign.center,
@@ -63,45 +63,49 @@ class _SignupScreenState extends State<SignupScreen> {
                       name = val!;
                     },
                     decoration: customInputDecoration(
-                      hintText: translate('Full name'),
+                      hintText: ('Full name'.tr()),
                       prefixIcon: IconsManager.person,
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
-                        return translate('Empty name');
+                        return ('Empty name'.tr());
                       }
                       return null;
                     },
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      top: 25,
-                      bottom: 17,
+                    padding: EdgeInsets.only(
+                      top: 15.h,
+                      bottom: 17.h,
                     ),
                     child: TextFormField(
                       onSaved: (val) {
                         companyName = val!;
                       },
                       decoration: customInputDecoration(
-                        hintText: translate('Company name'),
+                        hintText: ('Company name'.tr()),
                         prefixIcon: IconsManager.building,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return translate('Empty company name');
+                          return ('Empty Company name'.tr());
                         }
                         return null;
                       },
                     ),
                   ),
                   IntlPhoneField(
+                    textInputAction: TextInputAction.done,
+                    invalidNumberMessage: ('Invalid number'.tr()),
+                    pickerDialogStyle: PickerDialogStyle(
+                        searchFieldInputDecoration:
+                            InputDecoration(hintText: ('search country'.tr()))),
                     decoration: InputDecoration(
-                      labelText: translate('Phone Number'),
+                      labelText: ('Phone Number'.tr()),
+                      labelStyle: const TextStyle(color: Colors.grey),
                       fillColor: ColorsManager.gray,
                       filled: true,
-                      hintStyle: const TextStyle(
-                        color: ColorsManager.gray
-                      ),
+                      hintStyle: const TextStyle(color: ColorsManager.gray),
                       border: customOutlineInputBorder,
                     ),
                     onSaved: (phone) {
@@ -109,7 +113,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                     validator: (val) {
                       if (val!.number.isEmpty) {
-                        return translate('Empty number');
+                        return ('Empty number'.tr());
                       }
                       return null;
                     },
@@ -123,12 +127,12 @@ class _SignupScreenState extends State<SignupScreen> {
                         email = val!;
                       },
                       decoration: customInputDecoration(
-                        hintText: translate('Email'),
+                        hintText: ('Email'.tr()),
                         prefixIcon: IconsManager.mailCard,
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return translate('Empty email');
+                          return ('Empty email'.tr());
                         }
                         return null;
                       },
@@ -149,12 +153,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         disabledBorder: customOutlineInputBorder,
                         errorBorder: customOutlineInputBorder,
                         filled: true,
-
                         fillColor: ColorsManager.gray,
-                        hintText: translate('Password'),
-                        hintStyle: const TextStyle(
-                          color: Colors.grey
-                        ),
+                        hintText: ('Password'.tr()),
+                        hintStyle: const TextStyle(color: Colors.grey),
                         prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -169,10 +170,10 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return translate('Empty password');
+                          return ('Empty password'.tr());
                         }
                         if (val.length < 6) {
-                          return translate('Password at least 6 characters');
+                          return ('Password at least 6 characters'.tr());
                         }
                         return null;
                       },
@@ -180,8 +181,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: 20,
-                      bottom: 38,
+                      top: 10,
+                      bottom: 15,
                     ),
                     child: CustomButton(
                       onTap: () {
@@ -205,7 +206,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        translate('Already have an account ?'),
+                        ('Already have an account ?'.tr()),
                         style: const TextStyle(
                           fontSize: 12,
                           color: ColorsManager.primary,
@@ -217,16 +218,18 @@ class _SignupScreenState extends State<SignupScreen> {
                               context: context, routeName: 'loginScreen');
                         },
                         child: Text(
-                          translate('Login'),
+                          ('Login'.tr()),
                           style: const TextStyle(
                             fontSize: 12,
                             color: ColorsManager.primary,
-                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                 ],
               ),
             ),

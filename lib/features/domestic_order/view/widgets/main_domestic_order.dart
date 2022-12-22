@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
-import 'package:garrar/core/widgets/custom_button.dart';
+ import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/features/domestic_order/cubit/domestic_order_cubit.dart';
 import 'package:garrar/injector.dart';
 
@@ -36,7 +36,7 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          translate('Pickup Location'),
+          ('Pickup Location'.tr()),
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
         ),
         Padding(
@@ -65,7 +65,7 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
                 }),
           ),
         ),
-        Text(translate('Drop-off Location'),
+        Text(('Drop-off Location'.tr()),
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
         Padding(
           padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -91,7 +91,7 @@ class _MainDomesticOrderState extends State<MainDomesticOrder> {
                 }),
           ),
         ),
-        Text(translate('Arrival Time'),
+        Text('Arrival Time'.tr(),
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
         Padding(
           padding: EdgeInsets.only(top: 10.h, bottom: 18.h),

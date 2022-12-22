@@ -1,7 +1,7 @@
 {
   "Ahmed Mohamed":"Ahmed Mohamed",
   "Edit profile":"Edit profile",
-  "Change Language":"Change Language",
+  "Change Language":"التحويل إلي اللغة العربية",
   "Logout":"Logout",
   "Login":"Login",
   "My Orders":"My Orders",
@@ -41,9 +41,7 @@
   "Draft Orders":"Draft Orders",
   "Profile":"Profile",
   "Edit name":"Edit name",
-  "Empty name":"Empty name",
   "Edit Company name":"Edit Company name",
-  "Empty Company name":"Empty Company name",
   "Edit email":"Edit email",
   "Empty email":"Empty email",
   "Edit Phone Number":"Edit Phone Number",
@@ -81,5 +79,26 @@
   "Pickup Location":"Pickup Location",
   "Drop-off Location":"Drop-off Location",
   "Add notes if exists":"Add notes if exists",
-  "Extra Notes":"Extra Notes"
+
+  "Yes":"Yes",
+  "No":"No",
+  "Ok":"Ok",
+  "Do you want to close application":"Are you sure you want to close the application ?",
+  "Warning":"Warning",
+  "Please fill all data":"Please fill all data",
+  "Camera":"Camera",
+  "Gallery":"Gallery",
+  "Select image sourceSelect image source":"Select image source",
+  "Pick Image":"Pick Image",
+  "Welcome to":"Welcome to",
+  "Garrar":"Garrar",
+  "The best shipping app ever":"The best shipping app ever",
+  "Invalid number":"Invalid number",
+  "search country":"Search Country",
+  "Your Package Will Be Shipped":"Your Package Will Be Shipped",
+  "Make Order":"Make Order",
+  "Home":"Home",
+  "Clear": "Clear image",
+  "No internet":"Connection to server failed"
+
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/config/navigation.dart';
@@ -50,29 +51,35 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                      top: 196.h, left: 121.w, right: 121.w, bottom: 220.h),
+                      top: 100.h, left: 121.w, right: 121.w, bottom: 50.h),
                   child: Image.asset(ImagesManager.logo1),
                 ),
                 Text(
-                  'Welcome to',
-                  style: TextStyle(
+                  ('Welcome to'.tr()),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 40.sp,
+                    fontSize: 30,
                     color: Colors.white,
                   ),
                 ),
                 Text(
-                  'Garrar',
-                  style: TextStyle(
+                  ('Garrar'.tr()),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
-                      fontSize: 82.sp),
+                      fontSize: 50),
+                ),
+                SizedBox(
+                  height: 30.h,
                 ),
                 Text(
-                  'The best shipping app ever',
-                  style: TextStyle(
+                  ('The best shipping app ever'.tr()),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
                     fontWeight: FontWeight.w400,
-                    fontSize: 18.sp,
+                    fontSize: 18,
                     color: Colors.white,
                   ),
                 ),

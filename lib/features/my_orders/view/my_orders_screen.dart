@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
- import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_translate/flutter_translate.dart';
-import 'package:garrar/core/config/navigation.dart';
+ import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/utils/images.dart';
@@ -24,7 +24,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
-          padding: EdgeInsets.only(left: 15.w, top: 7.h),
+          padding: EdgeInsets.only(left: 15.w, top: 7.h, right: 15.w),
           child: Image.asset(
             ImagesManager.logo1,
             width: 27.w,
@@ -32,7 +32,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
           ),
         ),
         title: Text(
-          'My Orders',
+          ('My Orders'.tr()),
           style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w600,
@@ -90,10 +90,10 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                       fontWeight: FontWeight.w600),
                   tabs: [
                     Tab(
-                      text:   translate('All Orders') ,
+                      text: ('All Orders'.tr()),
                     ),
                     Tab(
-                      text:   translate('Draft Orders') ,
+                      text: ('Draft Orders'.tr()),
                     ),
                   ],
                 ),

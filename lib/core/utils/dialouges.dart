@@ -1,137 +1,28 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:easy_dialog/easy_dialog.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:garrar/core/utils/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 
 class Dialogues {
-  infoDialog(
-      {required BuildContext context,
-      required String title,
-      required String desc,
-      required DialogType dialogType,
-      Function? callbackFunction}) {
-    AwesomeDialog(
-        padding: const EdgeInsets.all(10),
-        desc: desc,
-        descTextStyle: const TextStyle(fontSize: 14),
-        titleTextStyle: const TextStyle(fontSize: 17),
-        title: title,
-        context: context,
-        animType: AnimType.scale,
-        dialogType: dialogType,
-        onDismissCallback: (dismissType) {
-          if (callbackFunction != null) callbackFunction();
-        }).show();
-  }
-
-  dynamic customDialog({
+  infoDialog({
     required BuildContext context,
     required String title,
     required String desc,
-    required Function onPress,
-    required String buttonName,
-    required double opacity,
-    required Widget content,
-    required bool close,
-  }) =>
-      EasyDialog(
-          cardColor: Colors.white,
-          fogOpacity: opacity,
-          cornerRadius: 30,
-          // contentPadding: EdgeInsets.all(20),
-          title: Text(
-            title,
-            style: const TextStyle(
-              fontSize: 15,
-              color: ColorsManager.primary,
-            ),
-          ),
-          description: Text(
-            desc,
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 12,
-              color: Colors.black,
-            ),
-          ),
-          closeButton: close,
-          contentList: [
-            Align(
-              alignment: Alignment.bottomCenter,
-              // heightFactor: 2,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 2, horizontal: 14),
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(50))),
-                  backgroundColor: ColorsManager.primary,
-                ),
-                child: Text(
-                  buttonName,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () {
-                  onPress();
-                },
-              ),
-            ),
-          ]).show(context);
-
-  confirmDialog(
-      {required BuildContext context,
-      required String title,
-      required String desc,
-      required Function onPress,
-      required String buttonName,
-      required double opacity}) {
-    return EasyDialog(
-        cardColor: Colors.white,
-        fogOpacity: opacity,
-        cornerRadius: 30,
-        contentPadding: const EdgeInsets.all(20),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 15,
-            color: ColorsManager.primary,
-          ),
-        ),
-        description: Text(
-          desc,
-          style: const TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 13,
-            color: Colors.black,
-          ),
-        ),
-        closeButton: true,
-        contentList: [
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(50))),
-              backgroundColor: ColorsManager.primary,
-              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 14),
-            ),
-            onPressed: () {
-              onPress();
-            },
-            child: Text(
-              buttonName,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ]).show(context);
+    required DialogType dialogType,
+  }) {
+    AwesomeDialog(
+      padding: EdgeInsets.all(10.h),
+      desc: desc,
+      descTextStyle: TextStyle(fontSize: 14.sp),
+      titleTextStyle: TextStyle(fontSize: 17.sp),
+      title: title,
+      context: context,
+      animType: AnimType.scale,
+      dialogType: dialogType,
+    ).show();
   }
 
   alertDialog({
@@ -145,25 +36,25 @@ class Dialogues {
   }) {
     AwesomeDialog(
       context: context,
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(10.h),
       dismissOnBackKeyPress: dismiss ?? true,
       dismissOnTouchOutside: dismiss ?? true,
       animType: AnimType.scale,
       dialogType: dialogType,
       desc: desc,
-      descTextStyle: const TextStyle(fontSize: 14),
-      titleTextStyle: const TextStyle(fontSize: 17),
+      descTextStyle: TextStyle(fontSize: 14.sp),
+      titleTextStyle: TextStyle(fontSize: 17.sp),
       title: title,
       btnOk: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12))),
-          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 14),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12.r))),
+          padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 14.w),
         ),
         child: Text(
           buttonName,
-          style: const TextStyle(
-            fontSize: 15,
+          style: TextStyle(
+            fontSize: 15.sp,
             color: Colors.white,
           ),
         ),
@@ -174,37 +65,27 @@ class Dialogues {
     ).show();
   }
 
-  loading(BuildContext context) {
-    AwesomeDialog(
-      context: context,
-      dialogType: DialogType.noHeader,
-      autoHide: const Duration(seconds: 1),
-      body: const Center(
-        child: CircularProgressIndicator(),
-      ),
-    ).show();
-  }
-
   Future<bool> onWillPop(BuildContext context) async {
     final shouldPop = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("هل تريد اغلاق التطبيق ؟"),
-        titleTextStyle: const TextStyle(fontSize: 17, color: Colors.black),
+        title: Text(("Do you want to close application".tr()),
+            textAlign: TextAlign.center),
+        titleTextStyle: TextStyle(fontSize: 17.sp, color: Colors.black),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text(
-              "No",
-              style: TextStyle(fontSize: 17),
+            child: Text(
+              ("No".tr()),
+              style: TextStyle(fontSize: 17.sp),
             ),
           ),
           TextButton(
             onPressed: () =>
                 SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
-            child: const Text(
-              'Yes',
-              style: TextStyle(fontSize: 17),
+            child: Text(
+              ('Yes'.tr()),
+              style: TextStyle(fontSize: 17.sp),
             ),
           ),
         ],
@@ -218,7 +99,7 @@ class Dialogues {
     showDialog(
         barrierColor: Colors.black.withOpacity(0.2),
         context: context,
-        builder: (context) => const CupertinoActivityIndicator(radius: 18));
+        builder: (context) => CupertinoActivityIndicator(radius: 18.r));
   }
 
   hideDialog(BuildContext context) {
@@ -233,39 +114,49 @@ class Dialogues {
   }) {
     AwesomeDialog(
       context: context,
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(10.w),
       dismissOnBackKeyPress: dismiss ?? true,
       dismissOnTouchOutside: dismiss ?? true,
       animType: AnimType.scale,
       dialogType: DialogType.info,
-      desc: 'Select image source',
-      descTextStyle: const TextStyle(fontSize: 14),
-      titleTextStyle: const TextStyle(fontSize: 17),
-      title: "Pick Image",
+      desc: 'Select image source'.tr(),
+      descTextStyle: TextStyle(fontSize: 14.sp),
+      titleTextStyle: TextStyle(fontSize: 17.sp),
+      title: "Pick Image".tr(),
       btnCancel: CustomButton(
         onTap: () {
           Navigator.of(context).pop();
           onCameraTap();
         },
-        buttonText: 'Camera',
+        buttonText: ('Camera'.tr()),
       ),
       btnOk: CustomButton(
         onTap: () {
           Navigator.of(context).pop();
           onGalleryTap();
         },
-        buttonText: 'Gallery',
+        buttonText: ('Gallery'.tr()),
       ),
     ).show();
   }
 }
 
 void showFillDataDialog({required BuildContext context}) {
-  Dialogues().alertDialog(
-      context: context,
-      title: 'Warning',
-      desc: 'Please fill all data',
-      dialogType: DialogType.warning,
-      buttonName: 'Ok',
-      onTap: () => Navigator.of(context).pop());
+  AwesomeDialog(
+    context: context,
+    title: ('Warning'.tr()),
+    desc: ('Please fill all data'.tr()),
+    showCloseIcon: true,
+    dialogType: DialogType.warning,
+    padding: EdgeInsets.all(10.w),
+
+    animType: AnimType.scale,
+    btnOk: CustomButton(
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+        buttonText: 'Ok'.tr()),
+    descTextStyle: TextStyle(fontSize: 14.sp),
+    titleTextStyle: TextStyle(fontSize: 17.sp),
+  ).show();
 }

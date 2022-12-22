@@ -6,6 +6,7 @@ import '../utils/colors.dart';
 ThemeData appTheme() {
   return ThemeData(
     primaryColor: ColorsManager.primary,
+
     hintColor: Colors.black,
     primarySwatch: Colors.green,
     fontFamily: 'Urbanist',

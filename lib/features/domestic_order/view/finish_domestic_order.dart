@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
-import 'package:garrar/core/widgets/custom_button.dart';
+ import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
 import 'package:garrar/features/domestic_order/cubit/domestic_order_cubit.dart';
 
@@ -24,7 +24,7 @@ class FinishDomesticOrder extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          translate('Location Info'),
+          ('Location Info'.tr()),
           style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),
         ),
         Padding(
@@ -44,7 +44,7 @@ class FinishDomesticOrder extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(translate("Pickup Location"),
+                    Text(("Pickup Location".tr()),
                         style: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
@@ -61,7 +61,7 @@ class FinishDomesticOrder extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      translate("Drop-off Location"),
+                      ("Drop-off Location".tr()),
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
@@ -80,7 +80,7 @@ class FinishDomesticOrder extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      translate("Arrival Time"),
+                      ("Arrival Time".tr()),
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
@@ -100,7 +100,7 @@ class FinishDomesticOrder extends StatelessWidget {
           ),
         ),
         Text(
-          translate('Extra Notes'),
+          ('Extra Notes'.tr()),
           style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp),
         ),
         Padding(
@@ -111,7 +111,7 @@ class FinishDomesticOrder extends StatelessWidget {
             },
             maxLines: 3,
             decoration: customInputDecoration(
-                hintText: translate('Add notes if exists')),
+                hintText: ('Add notes if exists')),
           ),
         ),
         CustomButton(

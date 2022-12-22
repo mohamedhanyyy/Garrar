@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_translate/flutter_translate.dart';
 
 InputDecoration customInputDecoration({
   String? hintText,
@@ -11,7 +11,7 @@ InputDecoration customInputDecoration({
   bool? enabled,
 }) {
   return InputDecoration(
-    hintText: translate(hintText!),
+    hintText: hintText!.tr(),
     hintStyle: TextStyle(
       color: hintColor ?? const Color(0xffC0C0C0),
     ),

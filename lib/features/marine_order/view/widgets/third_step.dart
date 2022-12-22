@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
 
 import '../../../../core/utils/dialouges.dart';
 import '../../../../core/utils/icons.dart';
@@ -12,7 +12,7 @@ import '../../cubit/marine_order_cubit.dart';
 class ThirdStep extends StatefulWidget {
   List<String> data = [
     'cairo',
-    'giza',
+    'Giza',
     'alex',
     'matroh',
     'fayoum',
@@ -42,7 +42,7 @@ class _ThirdStepState extends State<ThirdStep> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            translate('Get-Out Location'),
+            ('Get-Out Location'.tr()),
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
           ),
           Padding(
@@ -54,9 +54,7 @@ class _ThirdStepState extends State<ThirdStep> {
                   border: Border.all(color: Colors.black)),
               child: DropdownButtonFormField(
                   isExpanded: true,
-                  hint:   Text(translate('Choose Destination Location')),
-                  disabledHint:   Text(translate('Choose Destination Location')),
-                  decoration:
+                   decoration:
                       customDropdownDecoration(image: IconsManager.place),
                   borderRadius: BorderRadius.circular(15),
                   items: widget.data.map((e) {
@@ -72,7 +70,7 @@ class _ThirdStepState extends State<ThirdStep> {
                   }),
             ),
           ),
-          Text(translate('Destination location'),
+          Text('Destination location'.tr(),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
           Padding(
             padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -99,7 +97,7 @@ class _ThirdStepState extends State<ThirdStep> {
                   }),
             ),
           ),
-          Text(translate('Dry Port location'),
+          Text(('Dry Port location'.tr()),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
           Padding(
             padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
@@ -126,7 +124,7 @@ class _ThirdStepState extends State<ThirdStep> {
                   }),
             ),
           ),
-          Text(translate('Get-In location'),
+          Text(('Get-In location'.tr()),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
           Padding(
             padding: EdgeInsets.only(top: 10.h, bottom: 18.h),

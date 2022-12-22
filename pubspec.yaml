@@ -33,12 +33,10 @@ dependencies:
   firebase_core: ^2.4.0
   firebase_auth: ^4.2.1
   intl: ^0.17.0
-  day_night_switcher: ^0.2.0+1
   top_snackbar_flutter: ^3.0.0
-  flutter_locales: ^2.0.2
-  easy_localization: ^3.0.1
-  localize_and_translate: ^4.1.1
-  flutter_translate: ^4.0.3
+  easy_localization:
+  device_manager: ^0.0.2
+  flutter_offline: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -50,10 +48,9 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/translations/
     - assets/images/
     - assets/icons/
-    - assets/locales/ar.json
-    - assets/locales/en.json
 
   fonts:
     - family: Urbanist

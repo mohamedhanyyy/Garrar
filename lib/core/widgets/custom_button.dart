@@ -1,7 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/utils/colors.dart';
 
 class CustomButton extends StatelessWidget {
@@ -38,7 +37,7 @@ class CustomButton extends StatelessWidget {
         ),
       ),
       child: Text(
-        translate(buttonText),
+         (buttonText.tr()),
         style: TextStyle(
           color: fontColor ?? Colors.white,
           fontSize: fontSize ?? 14,

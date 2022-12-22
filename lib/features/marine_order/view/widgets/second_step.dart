@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:garrar/core/utils/dialouges.dart';
+ import 'package:garrar/core/utils/dialouges.dart';
 import 'package:garrar/features/marine_order/cubit/marine_order_cubit.dart';
 import 'package:intl/intl.dart';
 
@@ -43,7 +44,7 @@ class _SecondStepState extends State<SecondStep> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Shipping Type',
+              ('Shipping Type'.tr()),
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
             ),
             Padding(
@@ -51,7 +52,7 @@ class _SecondStepState extends State<SecondStep> {
               child: TextFormField(
                 validator: (val) {
                   if (val!.isEmpty) {
-                    return 'Empty booking number';
+                    return ('Empty booking number'.tr());
                   }
                   return null;
                 },
@@ -62,18 +63,18 @@ class _SecondStepState extends State<SecondStep> {
                   marineOrderCubit.shippingType = val!;
                 },
                 decoration: customInputDecoration(
-                    hintText: 'Enter booking number (BK)',
+                    hintText: ('Enter booking number (BK)'),
                     prefixIcon: IconsManager.swap),
               ),
             ),
-            Text('Customs Type',
+            Text(('Customs Type'.tr()),
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             Padding(
               padding: EdgeInsets.only(top: 10.h, bottom: 18.h),
               child: TextFormField(
                 validator: (val) {
                   if (val!.isEmpty) {
-                    return 'Empty custom type';
+                    return ('Empty custom type'.tr());
                   }
                   return null;
                 },
@@ -84,12 +85,12 @@ class _SecondStepState extends State<SecondStep> {
                   marineOrderCubit.customType = val!;
                 },
                 decoration: customInputDecoration(
-                  hintText: 'Choose custom type',
+                  hintText: ('Choose custom type'),
                   prefixIcon: IconsManager.worldLock,
                 ),
               ),
             ),
-            Text('Arrival Time',
+            Text(('Arrival Time'.tr()),
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp)),
             Padding(
               padding: EdgeInsets.only(top: 10.h, bottom: 20.h),
@@ -111,7 +112,7 @@ class _SecondStepState extends State<SecondStep> {
                 },
                 decoration: customInputDecoration(
                     prefixIcon: IconsManager.date,
-                    hintText: formattedDate ?? 'Set destination arrival time'),
+                    hintText: formattedDate ?? 'Set destination arrival time'.tr()),
               ),
             ),
             CustomButton(

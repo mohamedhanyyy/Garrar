@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:garrar/core/config/navigation.dart';
+ import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/images.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
@@ -21,7 +22,7 @@ void makeOrderDialog({required BuildContext context}) {
             height: 33.h,
           ),
           Text(
-            "Make Order",
+             ("Make Order".tr()),
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 20.sp,
@@ -31,7 +32,7 @@ void makeOrderDialog({required BuildContext context}) {
             height: 17.h,
           ),
           Text(
-            "Your Package Will Be Shipped",
+             ("Your Package Will Be Shipped".tr()),
             style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 14.sp,

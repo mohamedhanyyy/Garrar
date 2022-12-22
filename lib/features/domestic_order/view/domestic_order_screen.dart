@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
-import 'package:garrar/core/utils/colors.dart';
+ import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/widgets/back_button.dart';
 import 'package:garrar/features/domestic_order/view/finish_domestic_order.dart';
 import 'package:garrar/features/domestic_order/view/widgets/main_domestic_order.dart';
@@ -23,7 +23,7 @@ class _DomesticOrderScreenState extends State<DomesticOrderScreen> {
       appBar: AppBar(
         leading: activeStep == 0 ? BackButtonWidget(context: context) : null,
         title: Text(
-          translate('Make Domestic Order'),
+           ('Make Domestic Order'.tr()),
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20.sp,

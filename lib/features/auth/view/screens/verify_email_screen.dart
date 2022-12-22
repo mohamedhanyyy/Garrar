@@ -1,8 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
-import 'package:garrar/core/config/navigation.dart';
+ import 'package:flutter_screenutil/flutter_screenutil.dart';
+ import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:otp_text_field/otp_field.dart';
@@ -23,7 +22,7 @@ class VerifyEmailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          translate("Verify Email"),
+          ("Verify Email".tr()),
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
@@ -44,7 +43,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 200.h, bottom: 60.h),
                   child: Text(
-                    translate('Please add OTP sent to your email for verification'),
+                    ('Please add OTP sent to your email for verification'.tr()),
                     style:
                         TextStyle(fontWeight: FontWeight.w400, fontSize: 15.sp),
                   ),
@@ -76,7 +75,7 @@ class VerifyEmailScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      translate('Didnt receive OTP ?'),
+                      ('Didnt receive OTP ?'.tr()),
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
@@ -89,7 +88,7 @@ class VerifyEmailScreen extends StatelessWidget {
                     InkWell(
                       onTap: () {},
                       child: Text(
-                        translate('Try again'),
+                        ('Try again'.tr()),
                         style: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,

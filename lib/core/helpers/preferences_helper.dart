@@ -15,13 +15,6 @@ class PreferencesHelper {
     return preferences?.getString("token") ?? '';
   }
 
-  static Future<void> saveLang({required bool english}) async {
-    await preferences?.setBool("lang", english);
-  }
-
-  static bool? getLang() {
-    return preferences?.getBool("lang");
-  }
 
   static void clearPreferences() {
     preferences?.clear();

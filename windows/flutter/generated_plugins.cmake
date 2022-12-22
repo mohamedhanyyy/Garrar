@@ -3,6 +3,9 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  connectivity_plus_windows
+  device_manager
+  network_info_plus_windows
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

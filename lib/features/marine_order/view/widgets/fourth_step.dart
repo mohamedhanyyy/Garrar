@@ -1,9 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
-import 'package:garrar/core/widgets/custom_button.dart';
+ import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
 import 'package:garrar/features/marine_order/cubit/marine_order_cubit.dart';
 
@@ -30,7 +29,7 @@ class _FourthStepState extends State<FourthStep> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            translate('Main Info'),
+            ('Main Info'.tr()),
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),
           ),
           Padding(
@@ -50,7 +49,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Booking ID(BK)"),
+                      Text(("Booking ID(BK)".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -66,7 +65,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Container type"),
+                      Text(("Containers type".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -82,7 +81,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Shipping Line"),
+                      Text(("Shipping line".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -100,7 +99,7 @@ class _FourthStepState extends State<FourthStep> {
             ),
           ),
           Text(
-            translate('Shipping Info'),
+            ('Shipping Info'.tr()),
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),
           ),
           Padding(
@@ -120,7 +119,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Shipping Type"),
+                      Text(("Shipping Type".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -136,7 +135,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Customs Type"),
+                      Text(("Customs Type".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -152,7 +151,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Arrival Time"),
+                      Text(("Arrival Time".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -170,7 +169,7 @@ class _FourthStepState extends State<FourthStep> {
             ),
           ),
           Text(
-            translate('Location Info'),
+            ('Location Info'.tr()),
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp),
           ),
           Padding(
@@ -190,7 +189,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Get-out Location"),
+                      Text(("Get-Out Location".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -206,7 +205,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Destination Location"),
+                      Text(("Destination location".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -222,7 +221,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Dry Location"),
+                      Text(("Dry Location".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -238,7 +237,7 @@ class _FourthStepState extends State<FourthStep> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(translate("Get-in Location"),
+                      Text(("Get-In location".tr()),
                           style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -256,14 +255,14 @@ class _FourthStepState extends State<FourthStep> {
             ),
           ),
           Text(
-            translate('Extra Notes'),
+            ('Extra Notes'.tr()),
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp),
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 12.h),
             child: TextField(
               maxLines: 3,
-              decoration: customInputDecoration(hintText: translate('Add notes if exists')),
+              decoration: customInputDecoration(hintText: ('Add notes if exists')),
             ),
           ),
           CustomButton(

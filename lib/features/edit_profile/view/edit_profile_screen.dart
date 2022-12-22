@@ -1,9 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_translate/flutter_translate.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/widgets/back_button.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 import '../../../core/utils/colors.dart';
@@ -45,9 +46,9 @@ class EditProfileScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 85.h, bottom: 30.h),
                     child: Text(
-                      translate('Edit Profile'),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w600, fontSize: 40),
+                      ('Edit profile'.tr()),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 25.sp),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -61,7 +62,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                     validator: (val) {
                       if (val!.isEmpty) {
-                        return 'Empty name';
+                        return 'Empty name'.tr();
                       }
                       return null;
                     },
@@ -81,7 +82,7 @@ class EditProfileScreen extends StatelessWidget {
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return translate('Empty company name');
+                          return ('Empty company name'.tr());
                         }
                         return null;
                       },
@@ -101,31 +102,28 @@ class EditProfileScreen extends StatelessWidget {
                       ),
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return translate('Empty email');
+                          return ('Empty email'.tr());
                         }
                         return null;
                       },
                     ),
                   ),
                   IntlPhoneField(
-                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.done,
+                    invalidNumberMessage: ('Invalid number'.tr()),
+                    pickerDialogStyle: PickerDialogStyle(
+                        searchFieldInputDecoration:
+                            InputDecoration(hintText: ('search country'.tr()))),
                     decoration: InputDecoration(
-                      labelText: 'Edit Phone Number',
-                      labelStyle: TextStyle(
-                        color: ColorsManager.gray,
-                      ),
+                      labelText: ('Phone Number'.tr()),
+                      labelStyle: const TextStyle(color: Colors.grey),
                       fillColor: ColorsManager.gray,
                       filled: true,
+                      hintStyle: const TextStyle(color: ColorsManager.gray),
                       border: customOutlineInputBorder,
                     ),
                     onSaved: (phone) {
                       phoneNumber = phone!.number;
-                    },
-                    validator: (val) {
-                      if (val!.number.isEmpty) {
-                        return translate('Empty number');
-                      }
-                      return null;
                     },
                   ),
                   SizedBox(
@@ -146,7 +144,7 @@ class EditProfileScreen extends StatelessWidget {
                           onPressed: () {
                             // todo edit here
                           },
-                          child: Text(translate("Edit")),
+                          child: Text(("Edit".tr())),
                         ),
                       ),
                       const SizedBox(
@@ -166,7 +164,7 @@ class EditProfileScreen extends StatelessWidget {
                                 context: context,
                                 routeName: "changePasswordScreen");
                           },
-                          child: Text(translate("Change Password"),
+                          child: Text(("Change password".tr()),
                               textAlign: TextAlign.center),
                         ),
                       ),
