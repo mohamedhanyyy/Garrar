@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
@@ -9,8 +10,8 @@ import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/utils/images.dart';
 import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:garrar/core/widgets/offline_widget.dart';
+
 import '../../cubit/auth_cubit.dart';
 
 class LoginScreen extends StatefulWidget {

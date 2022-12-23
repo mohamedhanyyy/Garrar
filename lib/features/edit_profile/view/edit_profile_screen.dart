@@ -110,6 +110,8 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                   IntlPhoneField(
                     textInputAction: TextInputAction.done,
+                    initialCountryCode: '+20',
+
                     invalidNumberMessage: ('Invalid number'.tr()),
                     pickerDialogStyle: PickerDialogStyle(
                         searchFieldInputDecoration:

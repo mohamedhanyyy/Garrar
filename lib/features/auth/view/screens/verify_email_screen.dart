@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
- import 'package:flutter_screenutil/flutter_screenutil.dart';
- import 'package:garrar/core/config/navigation.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/utils/extensions.dart';
 import 'package:otp_text_field/otp_field.dart';

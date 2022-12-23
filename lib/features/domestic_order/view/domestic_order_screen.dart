@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
- import 'package:garrar/core/utils/colors.dart';
+import 'package:garrar/core/utils/colors.dart';
 import 'package:garrar/core/widgets/back_button.dart';
 import 'package:garrar/features/domestic_order/view/finish_domestic_order.dart';
 import 'package:garrar/features/domestic_order/view/widgets/main_domestic_order.dart';

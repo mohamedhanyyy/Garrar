@@ -1,16 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:garrar/core/helpers/preferences_helper.dart';
+import 'package:garrar/core/constants/api_end_points.dart';
 
 class DioHelper {
-  static const String url = 'BASE_URL';
   static BaseOptions opts = BaseOptions(
-    baseUrl: url,
-    responseType: ResponseType.json,
-    headers: {'token': 'Oauth ${PreferencesHelper.getToken()}'},
-    connectTimeout: 30000,
-    receiveTimeout: 30000,
-  );
+      baseUrl: ApiEndPoints.baseUrl, responseType: ResponseType.json);
 
   static Dio init() {
     return Dio(opts);
@@ -30,9 +24,14 @@ class DioHelper {
     }
   }
 
-  Future<Response?> postData(String url, Map<String, dynamic> data) async {
+ static Future<Response?> postData(String url, Map<String, dynamic> data,
+      Map<String, dynamic> headers) async {
     try {
-      Response? response = await dio?.post(url, data: data);
+      Response? response = await dio?.post(
+        url,
+        options: Options(headers: headers),
+        data: data,
+      );
       return response;
     } on DioError catch (e) {
       if (kDebugMode) {
@@ -42,7 +41,7 @@ class DioHelper {
     return null;
   }
 
-  Future<Response?> putData(String url, Map<String, dynamic> data) async {
+ static Future<Response?> putData(String url, Map<String, dynamic> data) async {
     try {
       Response? response = await dio?.put(url, data: data);
       return response;

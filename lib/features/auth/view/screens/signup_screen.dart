@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,9 +9,9 @@ import 'package:garrar/core/widgets/custom_button.dart';
 import 'package:garrar/core/widgets/custom_input_decoration.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+
 import '../../../../core/utils/icons.dart';
 import '../../cubit/auth_cubit.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -96,6 +97,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   IntlPhoneField(
                     textInputAction: TextInputAction.done,
+                     initialCountryCode: '+20',
                     invalidNumberMessage: ('Invalid number'.tr()),
                     pickerDialogStyle: PickerDialogStyle(
                         searchFieldInputDecoration:
