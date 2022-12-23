@@ -29,7 +29,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           child: BackButtonWidget(context: context),
         ),
         title: Text(
-          ("Change Password"),
+          "Change Password".tr(),
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
@@ -58,7 +58,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 TextFormField(
                   obscureText: visibility1,
                   decoration: InputDecoration(
-                    hintText: ('Current password'),
+                    hintText: ('Current password'.tr()),
                     filled: true,
                     fillColor: ColorsManager.gray,
                     border: customOutlineInputBorder,
@@ -84,7 +84,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   child: TextFormField(
                     obscureText: visibility2,
                     decoration: InputDecoration(
-                        hintText: ('New password'),
+                        hintText: ('New password'.tr()),
                       filled: true,
                       fillColor: ColorsManager.gray,
                       border: customOutlineInputBorder,

@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:garrar/application.dart';
@@ -19,6 +20,7 @@ Future<void> main() async {
       ],
       path: 'assets/translations',
       saveLocale: true,
+
       fallbackLocale: const Locale('en'),
       child: const MyApp(),
     ),

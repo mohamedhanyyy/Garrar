@@ -12,9 +12,8 @@ class PreferencesHelper {
   }
 
   static String? getToken() {
-    return preferences?.getString("token") ?? '';
+    return preferences?.getString("token");
   }
-
 
   static void clearPreferences() {
     preferences?.clear();

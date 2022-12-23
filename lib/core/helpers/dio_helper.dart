@@ -24,7 +24,7 @@ class DioHelper {
     }
   }
 
- static Future<Response?> postData(String url, Map<String, dynamic> data,
+  static Future<Response?> postData(String url, Map<String, dynamic> data,
       Map<String, dynamic> headers) async {
     try {
       Response? response = await dio?.post(
@@ -32,16 +32,20 @@ class DioHelper {
         options: Options(headers: headers),
         data: data,
       );
+      print("****DATA HAPPENED");
+
       return response;
     } on DioError catch (e) {
       if (kDebugMode) {
-        print(e);
+
+        print("****ERROR HAPPENED");
       }
     }
     return null;
   }
 
- static Future<Response?> putData(String url, Map<String, dynamic> data) async {
+  static Future<Response?> putData(
+      String url, Map<String, dynamic> data) async {
     try {
       Response? response = await dio?.put(url, data: data);
       return response;

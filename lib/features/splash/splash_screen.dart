@@ -26,10 +26,8 @@ class _SplashScreenState extends State<SplashScreen> {
     timer = Timer(const Duration(seconds: 2), () {
       NavigationManager.navigateReplacementToPage(
         context: context,
-        routeName: PreferencesHelper.getToken() == null ||
-                PreferencesHelper.getToken() == ''
-            ? Routes.login
-            : Routes.home,
+        routeName:
+            PreferencesHelper.getToken() == null ? Routes.login : Routes.home,
       );
     });
   }

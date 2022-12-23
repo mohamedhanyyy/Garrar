@@ -95,7 +95,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         obscureText: isVisible,
                         decoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Color(0xffC0C0C0)),
+                            hintStyle:
+                                const TextStyle(color: Color(0xffC0C0C0)),
                             border: customOutlineInputBorder,
                             enabledBorder: customOutlineInputBorder,
                             focusedErrorBorder: customOutlineInputBorder,
@@ -168,8 +169,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         buttonText: 'Sign in'.tr(),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         InkWell(
                           onTap: () {
@@ -185,7 +186,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
+                        SizedBox(height: 10),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               'Dont have an account?'.tr(),
@@ -199,7 +202,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             InkWell(
                               onTap: () {
                                 NavigationManager.navigateToPage(
-                                    context: context, routeName: 'signupScreen');
+                                    context: context,
+                                    routeName: 'signupScreen');
                               },
                               child: Text(
                                 'Sign up'.tr(),

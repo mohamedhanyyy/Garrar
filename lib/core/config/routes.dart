@@ -38,10 +38,10 @@ class AppRoutes {
             builder: (BuildContext context) => const SplashScreen());
       case Routes.login:
         return MaterialPageRoute(
-            builder: (BuildContext context) =>   LoginScreen());
+            builder: (BuildContext context) => LoginScreen());
       case Routes.signup:
         return MaterialPageRoute(
-            builder: (BuildContext context) =>   const SignupScreen());
+            builder: (BuildContext context) => const SignupScreen());
       case Routes.verifyEmail:
         return MaterialPageRoute(
             builder: (BuildContext context) => VerifyEmailScreen());
@@ -86,6 +86,6 @@ class NoRouteFoundScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("ERROR, NO PAGE FOUND");
+    return const Center(child: Text("ERROR, NO PAGE FOUND"));
   }
 }

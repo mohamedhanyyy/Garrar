@@ -97,7 +97,6 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   IntlPhoneField(
                     textInputAction: TextInputAction.done,
-                     initialCountryCode: '+20',
                     invalidNumberMessage: ('Invalid number'.tr()),
                     pickerDialogStyle: PickerDialogStyle(
                         searchFieldInputDecoration:
@@ -182,9 +181,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      top: 10,
-                      bottom: 15,
+                    padding:   EdgeInsets.only(
+                      top: 10.h,
+                      bottom: 15.h,
                     ),
                     child: CustomButton(
                       onTap: () {
@@ -205,7 +204,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         ('Already have an account ?'.tr()),

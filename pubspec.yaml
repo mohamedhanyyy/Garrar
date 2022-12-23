@@ -37,6 +37,8 @@ dependencies:
   easy_localization:
   device_manager: ^0.0.2
   flutter_offline: ^2.1.0
+  flutter_staggered_animations: ^1.1.1
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_test:

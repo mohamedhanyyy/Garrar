@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:garrar/core/config/navigation.dart';
 import 'package:garrar/core/utils/colors.dart';
+import 'package:garrar/core/utils/extensions.dart';
 import 'package:garrar/core/utils/icons.dart';
 import 'package:garrar/core/utils/images.dart';
 
@@ -17,6 +19,7 @@ class MyOrdersScreen extends StatefulWidget {
 }
 
 class _MyOrdersScreenState extends State<MyOrdersScreen> {
+
   int currentIndex = 0;
 
   @override
@@ -63,7 +66,6 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 Padding(
@@ -97,8 +99,38 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20.h),
-              ],
+                SizedBox(height: 10.h),
+                SizedBox(
+                  height: context.height/1.7,
+                  child: AnimationLimiter(
+
+                    child: ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      itemCount: 50,addAutomaticKeepAlives: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return AnimationConfiguration.staggeredList(
+                          position: index,
+
+                          duration: const Duration(milliseconds: 500),
+                          child: SlideAnimation(
+                            verticalOffset: 50.0,
+                            child: FadeInAnimation(
+                               child: SizedBox(
+                                 height: 40.h,
+                                 child: Card(
+                                  elevation: 10,
+                                  color: Colors.red.withOpacity(0.5),
+                                  shadowColor: Colors.black,
+                                  child: Center(child: Text("data $index"),),
+                              ),
+                               ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),              ],
             ),
           ),
         ),
